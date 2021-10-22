@@ -365,7 +365,7 @@ a {
 .banners-section .swiper-container,
 .banners-section .swiper-wrapper,
 .banners-section img {
-  height: 400px;
+  height: 350px;
 }
 .banner {
   position: relative;
@@ -1655,5 +1655,9 @@ a {
 .subscription-section .card .btn {
   background-color: #333;
   color: #fff;
+  font-weight: 600;
+}
+.be-a-mentor .form-container label,
+.be-a-mentor .form-container .btn {
   font-weight: 600;
 }

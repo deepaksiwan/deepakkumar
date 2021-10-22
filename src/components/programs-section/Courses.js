@@ -30,6 +30,7 @@ const Courses = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(listProgram());
     if (sort === 'student') {
       dispatch(listStudentCourse());
@@ -46,7 +47,7 @@ const Courses = () => {
     <div className='courses'>
       <MyNavbar />
       <div className='courses-head'>
-        <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-5 py-3'>
+        <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-4 py-3'>
           <h1>Programs and courses</h1>
           <form
             action='/search-blogs'
@@ -63,7 +64,7 @@ const Courses = () => {
               />
             </div>
           </form>
-          <div className='tags d-flex mt-3 mb-md-5 justify-content-center'>
+          <div className='tags d-flex mt-3 justify-content-center'>
             <ul className='d-flex flex-wrap'>
               <li>
                 <button className='btn' onClick={handleCLick('')}>
@@ -91,31 +92,34 @@ const Courses = () => {
       </div>
       <div className='courses-content'>
         <div id='#all' className='blogs-cards-two container py-5'>
-          <div className='text-center'>
-            {sort === 'student' ? (
-              <h2 className='mb-4'>Student Courses</h2>
-            ) : sort === 'professional' ? (
-              <h2 className='mb-4'>Professional Courses</h2>
-            ) : sort === 'enterpreneur' ? (
-              <h2 className='mb-4'>Enterpreneur Courses</h2>
-            ) : (
-              <h2 className='mb-4'>All Courses</h2>
-            )}
-          </div>
-
           <div className='row'>
             {program.map((course, index) => {
               return (
-                <div className='col-lg-4 col-md-6 col-12' key={index}>
+                <div
+                  className='col-lg-4 col-md-6 col-12 px-lg-3 px-sm-2 px-3 mb-5'
+                  key={index}
+                >
                   <div className='cards'>
-                    <div className='program-card py-3 px-4'>
-                      <div className='align-items-center'>
-                        <div className=''>
-                          <img src='/images/programs-bg.png' alt='' />
-                        </div>
-                        <div className=''>
-                          <div className='category-tags mb-md-3 mb-2'>
-                            {course.user_category
+                    <div className='program-card p-2'>
+                      <div className='img'>
+                        {course.icon_url === null ? (
+                          <img src='/images/user.png' alt='' />
+                        ) : (
+                          <img
+                            style={{
+                              objectFit: 'cover',
+                              objectPosition: 'top',
+                            }}
+                            src={
+                              'https://mentorkart-admin-staging.s3.amazonaws.com/' +
+                              course.icon_url
+                            }
+                            alt=''
+                          />
+                        )}
+                        <div className='category-tags mt-2'>
+                          {course.user_category &&
+                            course.user_category
                               .split(',')
                               .map((cate, index) => {
                                 return (
@@ -124,15 +128,24 @@ const Courses = () => {
                                   </span>
                                 );
                               })}
+                        </div>
+                      </div>
+                      <div className='p-3'>
+                        <div className='d-flex justify-content-between align-items-center'>
+                          <div>
+                            <h2 className='mt-0 mb-0'>
+                              {course.mk_course_name}
+                            </h2>
                           </div>
-                          <h2>{course.mk_course_name}</h2>
-                          <h1>₹ {course.price} /-</h1>
-                          <p className='mb-2'>{course.description}</p>
+                          <h6 className='mb-0'>₹ {course.price} /-</h6>
+                        </div>
+                        <p className='mb-2'>{course.description}</p>
+                        <div className='row'>
                           <button
                             onClick={() => {
                               setShowModal(true);
                             }}
-                            className='enroll-btn btn px-xl-5 px-md-3 px-3 py-md-1 btn-ani'
+                            className='enroll-btn btn btn-ani'
                           >
                             Enroll Now
                           </button>

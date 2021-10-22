@@ -6,12 +6,12 @@ const Testimonials = () => {
     <div className='testimonials-section py-5'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
         <div className='row align-items-center order-md-first order-last '>
-          <div className='col-md-6 left mb-md-0 mb-5'>
+          <div className='col-md-5 left mb-md-0 mb-5'>
             <div className='testimonial-cards'>
               <TestimonialCard />
             </div>
           </div>
-          <div className='col-md-5 offset-md-1 right mb-md-0 mb-5 order-md-last order-first'>
+          <div className='col-md-6 offset-md-1 right mb-md-0 mb-5 order-md-last order-first'>
             <span>TESTIMONIALS</span>
             <h1>What Mentee's Say</h1>
             <p>

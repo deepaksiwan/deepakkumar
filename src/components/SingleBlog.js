@@ -37,7 +37,7 @@ const SingleBlog = (props) => {
           alt=''
         />
         <div className='content'>
-          <div className='container d-flex flex-column justify-content-between py-3'>
+          <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 d-flex flex-column justify-content-between py-3'>
             <h1 className='mb-3'>{title}</h1>
             <div className='d-flex sec justify-content-between align-items-center mb-2'>
               <span className='badge rounded-pill bg-warning'>{tag}</span>
@@ -47,7 +47,7 @@ const SingleBlog = (props) => {
         </div>
       </div>
       <div className='section-2'>
-        <div className='container py-5'>
+        <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-5'>
           <div className='main-content'>
             {/* <div>{parse(blog.blog_content)}</div> */}
             {parse(content)}

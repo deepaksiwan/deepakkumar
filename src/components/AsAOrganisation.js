@@ -36,7 +36,7 @@ const AsAOrganisation = () => {
       <MyNavbar />
       <div className='be-a-mentor'>
         <header className=''>
-          <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-5 py-3'>
+          <div className='container container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-4 py-3'>
             <img className='guru-img' src='/images/mentorkartguru.png' alt='' />
             <h4 className='mt-3 mb-1'>Register Now</h4>
             <h1 className='mb-1'>As A Organisation</h1>

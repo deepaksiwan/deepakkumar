@@ -23,6 +23,7 @@ const Mentors = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (search === '') {
       dispatch(listMentor());
     } else {
@@ -45,7 +46,7 @@ const Mentors = () => {
       <MyNavbar />
 
       <div className='mentors-head'>
-        <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-5 py-3'>
+        <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-4 py-3'>
           <h1>Our Mentors</h1>
           <form
             action='/search-mentors'
@@ -64,7 +65,7 @@ const Mentors = () => {
               />
             </div>
           </form>
-          <div className='tags d-flex mt-3 mb-md-5 justify-content-center'>
+          <div className='tags d-flex mt-3 justify-content-center'>
             <ul className='d-flex flex-wrap'>
               <li>
                 <button className='btn' onClick={handleCLick('')}>
@@ -73,17 +74,17 @@ const Mentors = () => {
               </li>
               <li>
                 <button className='btn' onClick={handleCLick('student')}>
-                  Students
+                  Student
                 </button>
               </li>
               <li>
                 <button className='btn' onClick={handleCLick('professional')}>
-                  Professionals
+                  Professional
                 </button>
               </li>
               <li>
                 <button className='btn' onClick={handleCLick('enterpreneur')}>
-                  Enterpreneurs
+                  Enterpreneur
                 </button>
               </li>
             </ul>
