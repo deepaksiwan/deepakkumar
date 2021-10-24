@@ -107,6 +107,7 @@ const Mentors = () => {
                         categories={mentor.user_categories}
                         charges={mentor.mentor_cost}
                         position={mentor.current_position}
+                        about={mentor.about}
                       />
                     </div>
                   </div>

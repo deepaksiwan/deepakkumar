@@ -256,13 +256,29 @@ a {
 }
 .find-mentor .mentor-card {
   background: #fff;
-  border-radius: 40px;
+  border-radius: 20px;
   border: 0.5px solid #000;
 }
+.find-mentor .mentor-card .img {
+  height: 240px;
+  width: 480px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.find-mentor .mentor-card .img .category-tags {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+.find-mentor .mentor-card .category-tags .btn {
+  background-color: #fff;
+  color: #3d3d3d !important;
+  font-weight: 700 !important;
+}
 .find-mentor .mentor-card img {
-  border-radius: 50%;
-  width: 180px;
-  height: 180px;
+  width: 100%;
+  height: 100%;
 }
 .find-mentor .mentor-card div h2 {
   font-size: 1.75rem;
@@ -270,12 +286,13 @@ a {
   line-height: 2rem;
   margin-top: 1rem;
   text-transform: capitalize;
+  margin-bottom: -2.5px !important;
 }
 .find-mentor .mentor-card div span,
 .mentors-card .mentor-card div span,
 .courses .program-card p {
-  font-size: 0.75rem;
-  color: rgba(0, 0, 0, 0.5);
+  font-size: 14.5px;
+  color: #3d3d3d;
 }
 .find-mentor .mentor-card div span.view-profile {
   color: #f07867;
@@ -287,17 +304,24 @@ a {
 .mentors-card .mentor-card hr {
   margin: 0.5rem 0 1rem;
 }
+
+.find-mentor .mentor-card .about,
+.mentors-card .mentor-card .about {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #5c5c5c;
+}
 .find-mentor .mentor-card .mentor-card-btn,
 .mentors-card .mentor-card .mentor-card-btn {
   background: #fff;
-  border-radius: 25px;
+  border-radius: 7.5px;
+  font-weight: 500;
   border: 0.4px solid #000;
-  padding: 0.15rem 0.65rem;
+  padding: 4px 12px;
   width: 100%;
   height: 35px;
   line-height: 0.7rem;
   font-size: 0.75rem;
-  font-weight: 300;
   transform: scale(1);
   transition: transform 0.2s ease-in-out;
 }
@@ -311,22 +335,6 @@ a {
   color: #fff;
   border: none;
   position: relative;
-  transform: scale(1.1);
-
-  filter: drop-shadow(0px 4.05459px 5.79226px rgba(243, 162, 39, 0.25));
-
-  /* box-shadow: rgba(); */
-}
-.find-mentor .mentor-card .mentor-card-btn.active .check-container,
-.mentors-card .mentor-card .mentor-card-btn.active .check-container {
-  background: #039f38;
-  color: #fff;
-  border-radius: 50%;
-  padding: 0.2rem;
-  font-size: 0.7rem;
-  position: absolute;
-  top: -6px;
-  right: -4px;
 }
 
 .find-mentor .mentor-card .mentor-card-btn span,
@@ -577,6 +585,7 @@ a {
   border-radius: 5px;
   font-size: 14px;
   font-weight: 500;
+  box-shadow: 0px 4px 30px rgb(0 0 0 / 25%);
 }
 .programs .programs-cards .swiper-container {
   height: 260px;
@@ -1204,29 +1213,42 @@ a {
   left: 10px;
 }
 .mentors-card .mentor-card .img .category-tags .btn {
-  background: #f86d6c !important;
-  font-weight: 600;
+  background: #fff !important;
+  color: #3d3d3d !important;
+  font-weight: 700;
   letter-spacing: 1px;
   border: none;
 }
 .courses .program-card .img .category-tags .btn {
   background: #333 !important;
   color: #fff !important;
-  font-weight: 600;
   letter-spacing: 1px;
   border: none;
 }
+.find-mentor .mentor-card div h2,
 .mentors-card .mentor-card div h2,
 .courses .program-card div h2 {
+  color: #111;
   font-size: 24px;
   font-weight: 600;
   text-transform: capitalize;
   text-align: left;
 }
+.find-mentor .mentor-card div h6,
 .mentors-card .mentor-card div h6,
 .courses .program-card div h6 {
-  font-size: 14px;
-  font-weight: 700;
+  color: #111;
+  white-space: nowrap;
+  font-size: 17px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 14px;
+}
+
+.find-mentor .mentor-card div h6 span,
+.mentors-card .mentor-card div h6 span {
+  font-size: 11.5px;
+  color: #666;
 }
 .mentors-card .mentor-card .mentor-card-btn {
   padding: 2px 12px !important;
@@ -1364,16 +1386,14 @@ a {
   overflow: hidden;
   margin: auto;
 }
-.mentor-profile .section-1 .col-md-9 {
-  text-align: left;
-}
-.mentor-profile .section-1 .col-md-9 h2 {
+.mentor-profile .section-3 h2 {
   font-size: 35px;
   font-weight: 600;
   margin-bottom: 0;
 }
-.mentor-profile .section-1 .col-md-9 p {
-  font-size: 18px;
+.mentor-profile .section-3 p {
+  font-size: 16px;
+  color: #555;
   font-weight: 500;
 }
 .mentor-profile .pro-socials a,
@@ -1390,21 +1410,6 @@ a {
 .mentor-profile .secondary,
 .mentor-profile .section-1 {
   background-color: #fff;
-}
-.mentor-profile .section-1 i {
-  font-size: 22px !important;
-}
-.mentor-profile .section-1 li {
-  margin: 0.75rem 1rem;
-  transform: scale(1);
-  transition: transform 0.3s all;
-}
-.mentor-profile .section-1 li:hover {
-  transform: scale(1.1);
-}
-
-.mentor-profile .section-1 li a:hover {
-  color: #f07867;
 }
 .mentor-profile .showcase-card p {
   font-size: 12px;
@@ -1603,11 +1608,11 @@ a {
 }
 .subscription-section .swiper-container,
 .subscription-section .swiper-wrapper {
-  height: 460px !important;
+  height: 500px !important;
 }
 .subscription-section .subs-card,
 .subscription-section .subs-card-alt {
-  height: 420px !important;
+  height: 460px !important;
 }
 .subscription-section h1 {
   font-size: 50px;
@@ -1652,12 +1657,67 @@ a {
   left: 50%;
   bottom: 15px;
 }
+.subscription-section .card .description {
+  line-height: 26px;
+  font-size: 16px;
+  font-weight: 600;
+}
 .subscription-section .card .btn {
   background-color: #333;
   color: #fff;
   font-weight: 600;
+  font-size: 17.5px;
 }
 .be-a-mentor .form-container label,
 .be-a-mentor .form-container .btn {
   font-weight: 600;
+}
+
+.signup-modal .form-control,
+.react-tel-input .flag-dropdown,
+.signup-modal .react-tel-input .selected-flag {
+  padding-left: 0;
+}
+.signup-modal .form-control,
+.signup-modal .react-tel-input .form-control {
+  border: none !important;
+  border-bottom: 1px solid #3d3d3d !important;
+  border-radius: 0;
+}
+.signup-modal .react-tel-input .form-control {
+  padding-left: 35px;
+}
+.react-tel-input .flag-dropdown,
+.signup-modal .react-tel-input .selected-flag {
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  padding-bottom: 5px !important;
+}
+.signup-modal .toggle-span {
+  color: #f07867;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+.signup-modal .toggle-span:hover {
+  color: #f06965;
+  font-size: 16.5px;
+}
+.signup-modal .form-check-input {
+  margin-top: 6px !important;
+}
+textarea:focus,
+textarea.form-control:focus,
+input.form-control:focus,
+input[type='text']:focus,
+input[type='password']:focus,
+input[type='email']:focus,
+input[type='number']:focus,
+[type='text'].form-control:focus,
+[type='password'].form-control:focus,
+[type='email'].form-control:focus,
+[type='tel'].form-control:focus,
+[contenteditable].form-control:focus {
+  box-shadow: inset 0 -1px 0 #ddd;
 }

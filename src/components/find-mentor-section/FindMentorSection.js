@@ -33,7 +33,7 @@ const FindMentorSection = () => {
         <div className='find-mentor py-sm-5'>
           <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
             <div className='row'>
-              <div className='col-md-4 left mb-md-0 mb-5 '>
+              <div className='col-md-4 left mb-md-0 mb-lg-5 mb-3 '>
                 <span className='ms-1'>MENTORS</span>
                 <h1>Find a Mentor</h1>
                 <p className=''>Get Mentored from best</p>
@@ -79,6 +79,9 @@ const FindMentorSection = () => {
                               name={mentor.first_name + ' ' + mentor.last_name}
                               categories={mentor.user_categories}
                               charges={mentor.mentor_cost}
+                              position={mentor.current_position}
+                              designation={mentor.designation}
+                              about={mentor.about}
                             />
                           </div>
                         </SwiperSlide>

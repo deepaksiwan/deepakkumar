@@ -38,10 +38,10 @@ const SignUpModal = (props) => {
       password: SignInPassword,
     }).then((res, err) => {
       if (!err) {
-        console.log(res);
+        // console.log(res);
         if (res.status === 200) {
           SetSigninAlert(true);
-          console.log('hello');
+          // console.log('hello');
           SetSignInEmail('');
           SetSignInPassword('');
         }
@@ -51,15 +51,15 @@ const SignUpModal = (props) => {
     });
   };
   const SignUpSubmit = (e) => {
-    console.log(
-      username,
-      phone.slice(2, 12),
-      email,
-      password,
-      confirm,
-      firstname,
-      lastname
-    );
+    // console.log(
+    //   username,
+    //   phone.slice(2, 12),
+    //   email,
+    //   password,
+    //   confirm,
+    //   firstname,
+    //   lastname
+    // );
     Axios.post('https://mentorkart.org/api/register', {
       username: username,
       mobile_no: +phone.slice(2, 12),
@@ -73,7 +73,7 @@ const SignUpModal = (props) => {
       country_name: 'INDIA',
     }).then((res, err) => {
       if (!err) {
-        console.log(res);
+        // console.log(res);
         if (res.data.status === true) {
           SetSignupAlert(true);
           SetEmail('');
@@ -106,7 +106,7 @@ const SignUpModal = (props) => {
   return (
     <div className='signup-modal'>
       <div className='modal-img d-lg-block d-none col-lg-6'>
-        <img src='/images/sign-up.png' alt='' />
+        <img src='/images/signup-left.png' alt='' />
       </div>
       <div className='modal-form px-md-5 px-1 d-flex flex-column justify-content-center align-item-center col-lg-6 col-12'>
         {showSignUp === true && (
@@ -125,7 +125,7 @@ const SignUpModal = (props) => {
             >
               <fieldset>
                 <legend className='d-flex justify-content-between align-items-center mb-3'>
-                  <h2>Sign up</h2>
+                  <h2>Who you are?</h2>
                   <button
                     onClick={() => {
                       props.showModalBtn(false);
@@ -135,44 +135,51 @@ const SignUpModal = (props) => {
                     <i className='fas fa-times fa-2x'></i>
                   </button>
                 </legend>
-                {/* <div className='d-flex justify-content-between align-items-center mb-4'>
-                  <div className='form-check'>
+                <div className='d-md-flex d-none justify-content-between align-items-center mb-4'>
+                  <div className='form-check radio-btn'>
                     <label className='form-check-label'>
                       <input
                         type='radio'
                         className='form-check-input '
                         name='optionsRadios'
-                        id='optionsRadios1'
-                        value='option1'
+                        id='Professional'
+                        value='Professional'
                       />
                       Individual
                     </label>
                   </div>
-                  <div className='form-check'>
+                  <div className='form-check radio-btn'>
                     <label className='form-check-label'>
                       <input
                         type='radio'
                         className='form-check-input'
                         name='optionsRadios'
-                        id='optionsRadios2'
-                        value='option2'
+                        id='Professional'
+                        value='Professional'
                       />
                       Professional
                     </label>
                   </div>
-                  <div className='form-check disabled'>
+                  <div className='form-check radio-btn'>
                     <label className='form-check-label'>
                       <input
                         type='radio'
                         className='form-check-input'
-                        name='optionsRadios'
-                        id='optionsRadios3'
-                        value='option3'
+                        name='Entrepreneur'
+                        id='Entrepreneur'
+                        value='Entrepreneur'
                       />
-                      entrepreneur
+                      Entrepreneur
                     </label>
                   </div>
-                </div> */}
+                </div>
+                <div className='d-md-none d-block mb-4'>
+                  <select className='form-select'>
+                    <option value='Student'>Student</option>
+                    <option value='Professional'>Professional</option>
+                    <option value='Entrepreneur'>Entrepreneur</option>
+                  </select>
+                </div>
 
                 <div className='row'>
                   <div className='col-md-6 mb-3'>
@@ -205,7 +212,7 @@ const SignUpModal = (props) => {
                   </div>
                 </div>
 
-                {/* <div className='form-group mb-3'>
+                <div className='form-group mb-3'>
                   <input
                     type='text'
                     name='username'
@@ -218,7 +225,7 @@ const SignUpModal = (props) => {
                     className='form-control form-control-sm'
                     placeholder='Username'
                   />
-                </div> */}
+                </div>
                 <div className='form-group mb-3'>
                   <input
                     type='email'
@@ -273,7 +280,7 @@ const SignUpModal = (props) => {
                     placeholder='Confirm password'
                   />
                 </div>
-                <div className='form-check mb-3'>
+                <div className='form-check mb-3 align-items-end'>
                   <input
                     className='form-check-input mt-2'
                     type='checkbox'
@@ -292,25 +299,27 @@ const SignUpModal = (props) => {
                   />
 
                   <label className='form-check-label' htmlFor='agree'>
-                    I agree to the processing of personal data and accept the
-                    terms of the use aggreement
+                    I agree to terms and conditions
                   </label>
                 </div>
-                <button type='submit' className={btnClass}>
-                  Sign Up
-                </button>
+                <div className='row px-2'>
+                  <button type='submit' className='btn btn-dark'>
+                    Get OTP
+                  </button>
+                </div>
               </fieldset>
             </form>
 
-            <div className='text-center'>
-              <span>or</span>
-              <h6>Already have an account</h6>
-              <button
-                onClick={() => ToggleSignIn()}
-                className={'btn btn-outline-secondary btn-sm'}
-              >
-                Log In
-              </button>
+            <div className='text-center mt-2'>
+              <h6>
+                Already have an account ?
+                <span
+                  onClick={() => ToggleSignIn()}
+                  className={'toggle-span ps-2'}
+                >
+                  Log In
+                </span>
+              </h6>
             </div>
           </div>
         )}
@@ -368,21 +377,25 @@ const SignUpModal = (props) => {
                     placeholder='Password'
                   />
                 </div>
-                <button type='submit' className={'btn col-12'}>
-                  Log In
-                </button>
+                <div className='row px-2'>
+                  <button type='submit' className='btn btn-dark'>
+                    Get OTP
+                  </button>
+                </div>
               </fieldset>
             </form>
 
             <div className='text-center'>
               <span>or</span>
-              <h6>Don't have an account</h6>
-              <button
-                onClick={() => ToggleSignUp()}
-                className={'btn btn-outline-secondary btn-sm'}
-              >
-                Sign Up
-              </button>
+              <h6>
+                Don't have an account ?
+                <span
+                  onClick={() => ToggleSignUp()}
+                  className={'toggle-span ps-2'}
+                >
+                  Sign Up
+                </span>
+              </h6>
             </div>
           </div>
         )}

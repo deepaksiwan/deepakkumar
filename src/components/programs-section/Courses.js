@@ -73,17 +73,17 @@ const Courses = () => {
               </li>
               <li>
                 <button className='btn' onClick={handleCLick('student')}>
-                  Students
+                  Student
                 </button>
               </li>
               <li>
                 <button className='btn' onClick={handleCLick('professional')}>
-                  Professionals
+                  Professional
                 </button>
               </li>
               <li>
                 <button className='btn' onClick={handleCLick('enterpreneur')}>
-                  Enterpreneurs
+                  Enterpreneur
                 </button>
               </li>
             </ul>
@@ -106,10 +106,6 @@ const Courses = () => {
                           <img src='/images/user.png' alt='' />
                         ) : (
                           <img
-                            style={{
-                              objectFit: 'cover',
-                              objectPosition: 'top',
-                            }}
                             src={
                               'https://mentorkart-admin-staging.s3.amazonaws.com/' +
                               course.icon_url
@@ -133,13 +129,13 @@ const Courses = () => {
                       <div className='p-3'>
                         <div className='d-flex justify-content-between align-items-center'>
                           <div>
-                            <h2 className='mt-0 mb-0'>
+                            <h2 className='mt-0 mb-0 pe-3'>
                               {course.mk_course_name}
                             </h2>
                           </div>
                           <h6 className='mb-0'>₹ {course.price} /-</h6>
                         </div>
-                        <p className='mb-2'>{course.description}</p>
+                        <p className='mt-2 mb-3'>{course.description}</p>
                         <div className='row'>
                           <button
                             onClick={() => {

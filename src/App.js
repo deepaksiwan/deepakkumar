@@ -1,4 +1,3 @@
-
 import FindMentorSection from './components/find-mentor-section/FindMentorSection';
 import Header from './components/header-section/Header';
 import JoinMentorkart from './components/join-mentokart/JoinMentorkart';
@@ -29,11 +28,7 @@ import FindAMentor from './components/FindAMentor';
 import YoutubeSection from './components/youtube-section/YoutubeSection';
 import SubscriptionSection from './components/subscription-section/SubscriptionSection';
 
-
-function App ()
-{
- 
-  
+function App() {
   return (
     <div>
       <Switch>
@@ -90,7 +85,10 @@ function App ()
         <Route path='/find-a-mentor'>
           <FindAMentor />
         </Route>
-        <Route path='/mentor-profile/:id' component={MentorProfile}></Route>
+        <Route
+          path='/mentor-profile/:username/:id'
+          component={MentorProfile}
+        ></Route>
         <Route path='/blog/:id' component={SingleBlog}></Route>
       </Switch>
     </div>

@@ -60,40 +60,30 @@ const MentorProfile = (props) => {
           <h1 className='mb-1'>MENTOR PROFILE</h1>
         </div>
       </header>
-      <div className='content'>
-        <div className='section-1 py-4'>
-          <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
-            <div className='row align-items-center'>
-              <div className='col-md-3'>
-                <div className='profile-img'>
-                  <img
-                    style={{
-                      objectFit: 'cover',
-                      objectPosition: 'center',
-                      height: '100%',
-                      width: '100%',
-                    }}
-                    src={imageURL}
-                    className='img-fluid'
-                    alt=''
-                  />
-                </div>
-              </div>
-              <div className='col-md-9 ps-3'>
-                <h2 className='text-capitalize mt-md-0 mt-3'>
-                  {firstName + ' ' + middleName + ' ' + lastName}
-                </h2>
-                <p>{categories}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <div className='secondary pb-5 pt-md-5'>
         <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
           <div className='section-3'>
             <div className='row'>
               <div className='col-md-4'>
+                <div className='bio text-center pt-3 mb-4'>
+                  <div className='profile-img'>
+                    <img
+                      style={{
+                        objectFit: 'cover',
+                        objectPosition: 'center',
+                        height: '100%',
+                        width: '100%',
+                      }}
+                      src={imageURL}
+                      className='img-fluid'
+                      alt=''
+                    />
+                  </div>
+                  <h2 className='text-capitalize mt-3'>
+                    {firstName + ' ' + middleName + ' ' + lastName}
+                  </h2>
+                  <p>{categories}</p>
+                </div>
                 <div className='book-sec mb-4 px-md-0 px-3'>
                   <div className='row'>
                     <div className='col-6'>

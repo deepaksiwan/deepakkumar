@@ -11,28 +11,25 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/swiper.scss';
 import 'swiper/components/pagination/pagination.scss';
-import { listYoutube } from '../../redux/actions/youtubeActions'
+import { listYoutube } from '../../redux/actions/youtubeActions';
 
 // install Swiper modules
 SwiperCore.use([Pagination, A11y, Autoplay]);
 
 const YoutubeSection = () => {
-  const dispatch = useDispatch()
-  const youtubeList = useSelector( state => state.youtubeList )
-  const { youtube } = youtubeList
-  
-  
-  useEffect( () =>
-  {
-    dispatch(listYoutube())
-  },[dispatch])
+  const dispatch = useDispatch();
+  const youtubeList = useSelector((state) => state.youtubeList);
+  const { youtube } = youtubeList;
 
-  
+  useEffect(() => {
+    dispatch(listYoutube());
+  }, [dispatch]);
+
   const opts = {
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 0,
-      origin: 'http://localhost:8100',
+      origin: 'https://localhost:8100',
     },
   };
   return (
@@ -59,15 +56,17 @@ const YoutubeSection = () => {
               },
             }}
           >
-            {youtube[0] && youtube[0].youtube&& youtube[0].youtube.map((video, index) => {
-              return (
-                <SwiperSlide key={index}>
-                  <div className='youtube-video'>
-                    <YouTube videoId={getYouTubeID(video.url)} opts={opts} />
-                  </div>
-                </SwiperSlide>
-              );
-            })}
+            {youtube[0] &&
+              youtube[0].youtube &&
+              youtube[0].youtube.map((video, index) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <div className='youtube-video'>
+                      <YouTube videoId={getYouTubeID(video.url)} opts={opts} />
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
           </Swiper>
         </div>
       </div>
