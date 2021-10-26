@@ -17,15 +17,24 @@ body {
 a {
   text-decoration: none;
 }
-.navbar-light .navbar-nav .nav-link {
+.navbar-light .navbar-nav .nav-link,
+.navbar-light .navbar-nav .dropdown .heading,
+.showcase-links .navbar-nav .nav-link {
   color: #333333 !important;
   font-size: 16.5px !important;
   font-weight: 500;
   cursor: pointer;
   transform: scale(1);
-  transition: transform 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
-.navbar-light .navbar-nav .nav-link:hover {
+.navbar-light .navbar-nav .dropdown .dropdown-item {
+  background: #fff;
+}
+.btn:focus {
+  box-shadow: none !important;
+}
+.navbar-light .navbar-nav .nav-link:hover,
+.showcase-links .navbar-nav .nav-link:hover {
   transform: scale(1.1);
 }
 .navbar-light .navbar-nav .social-nav-link {
@@ -37,16 +46,44 @@ a {
   width: 30px;
   height: 30px;
 }
-.navbar-light .navbar-nav .social-nav-link i {
+.showcase-links .navbar-nav .social-nav-link i {
   font-size: 20px !important;
   font-weight: 600;
 }
 
+.navbar-light .navbar-btn .nav-link {
+  background-color: #3d3d3d;
+  margin-right: 1rem;
+  padding: 4px 10px !important;
+  color: #fdf0e9 !important;
+  border-radius: 5px;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  transform: scale(1) !important;
+  transition: all 0.3s ease !important;
+}
+.navbar-light .navbar-btn .nav-link:hover {
+  transform: scale(1.03) !important;
+}
 .showcase-section {
+  position: relative;
   background: #fdf0e9;
   margin-top: 12vh;
   height: calc(100vh - 12vh);
 }
+.showcase-links {
+  position: absolute;
+  right: 2%;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 2px solid #3d3d3d;
+  padding: 10px;
+  border-radius: 40px;
+}
+.showcase-links .navbar-nav .nav-link .fab {
+  font-size: 30px !important;
+}
+
 .showcase-section .left,
 .showcase-section .right {
   height: 88vh;
@@ -1359,6 +1396,10 @@ a {
 .terms-condi .section {
   margin-bottom: 3rem !important;
 }
+.faq .container .accordion-button,
+.mentor-profile .accordion-button {
+  color: #f07867;
+}
 .faq .container .accordion-button:not(.collapsed),
 .mentor-profile .accordion-button:not(.collapsed) {
   color: #f07867;
@@ -1380,8 +1421,8 @@ a {
 }
 
 .mentor-profile .profile-img {
-  height: 175px;
-  width: 175px;
+  height: 150px;
+  width: 150px;
   border-radius: 50%;
   overflow: hidden;
   margin: auto;
@@ -1434,6 +1475,9 @@ a {
   text-align: left;
   font-weight: 400;
   font-size: 15px;
+}
+.mentor-profile .accordion p address {
+  font-size: 12.5px;
 }
 .mentor-profile .accordion h6 {
   font-weight: 17.5px;

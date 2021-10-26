@@ -20,6 +20,10 @@ const MentorProfile = (props) => {
   const [firstName, setFirstName] = useState('');
   const [middleName, setMiddleName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [mentorAbout, setMentorAbout] = useState('');
+  const [mentorExperience, setMentorExperience] = useState([]);
+  const [mentorAchievement, setMentorAchievement] = useState([]);
+  const [mentorTestimonial, setMentorTestimonial] = useState([]);
   const [mentorType, setMentorType] = useState('');
   const [categories, setCategories] = useState([]);
   const [imageURL, setImageURL] = useState('/images/user.png');
@@ -47,6 +51,18 @@ const MentorProfile = (props) => {
         setCategories(
           res.data.data.user.user_categories.split(',').join(' | ')
         );
+      }
+      if (res.data.data.user.about) {
+        setMentorAbout(res.data.data.user.about);
+      }
+      if (res.data.data.user_experience) {
+        setMentorExperience(res.data.data.user_experience);
+      }
+      if (res.data.data.user_achievement) {
+        setMentorAchievement(res.data.data.user_achievement);
+      }
+      if (res.data.data.user_testimonial) {
+        setMentorTestimonial(res.data.data.user_testimonial);
       }
     });
   }, [props.match.params.id]);
@@ -201,15 +217,7 @@ const MentorProfile = (props) => {
                       data-bs-parent='#accordionFlushExample'
                     >
                       <div className='accordion-body'>
-                        <p>
-                          Entrepreneur I Certified Business Coach I Certified
-                          Life coach I Public speaker I Startup mentor. With
-                          more than 25 years’ experience in successful business
-                          leadership, led teams and organizations to innovative,
-                          build, implement business solutions & products in the
-                          field of Information Technology and services for
-                          customers across 20+ countries.
-                        </p>
+                        <p>{mentorAbout}</p>
                       </div>
                     </div>
                   </div>
@@ -235,34 +243,17 @@ const MentorProfile = (props) => {
                       <div className='accordion-body'>
                         <div className='experience'>
                           <ul>
-                            <li>
-                              <h6>Founder & CEO, Mentorkart</h6>
-                              <p>
-                                Lorem ipsum, dolor sit amet consectetur
-                                adipisicing elit. Iste voluptates laudantium
-                                aliquid, mollitia ipsa deserunt amet ea
-                                consequatur et suscipit numquam, natus fugit
-                                reprehenderit aliquam at sed minus
-                              </p>
-                            </li>
-                            <li>
-                              <h6>Numer of the board Advisors</h6>
-                              <p>
-                                Lorem ipsum dolor sit, amet consectetur
-                                adipisicing elit. Doloremque doloribus ullam
-                                nisi quaerat odit beatae officiis repellat
-                                facere corporis minima.
-                              </p>
-                            </li>
-                            <li>
-                              <h6>Co-Founder</h6>
-                              <p>
-                                Lorem ipsum dolor, sit amet consectetur
-                                adipisicing elit. Tenetur animi quaerat sit in
-                                sequi, ea illo est incidunt amet, beatae
-                                veritatis ipsa tempora, maxime ratione.
-                              </p>
-                            </li>
+                            {mentorExperience.map((experience, index) => {
+                              return (
+                                <li key={index}>
+                                  <h6>
+                                    {experience.title} at{' '}
+                                    {experience.organisation}{' '}
+                                  </h6>
+                                  <p>{experience.description}</p>
+                                </li>
+                              );
+                            })}
                           </ul>
                         </div>
                       </div>
@@ -288,11 +279,18 @@ const MentorProfile = (props) => {
                       data-bs-parent='#accordionFlushExample'
                     >
                       <div className='accordion-body'>
-                        <p>
-                          MentorKart® has intelligent algorithms for matching a
-                          mentee with a relevant and highly rated mentor. So you
-                          can be assured of getting the best.
-                        </p>
+                        <ul>
+                          {mentorAchievement.map((achievement, index) => {
+                            return (
+                              <li key={index}>
+                                <h6>
+                                  {achievement.name} on {achievement.year}{' '}
+                                </h6>
+                                <p>{achievement.description}</p>
+                              </li>
+                            );
+                          })}
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -316,11 +314,22 @@ const MentorProfile = (props) => {
                       data-bs-parent='#accordionFlushExample'
                     >
                       <div className='accordion-body'>
-                        <p>
-                          Sign up on MentorKart® as a mentee and set your
-                          professional and personal goals. You can set upto 6
-                          goals.
-                        </p>
+                        <ul>
+                          {mentorTestimonial.map((testimonial, index) => {
+                            return (
+                              <li key={index}>
+                                <p>
+                                  {testimonial.description}
+                                  <address>
+                                    {' '}
+                                    ~ {testimonial.given_by} on{' '}
+                                    {testimonial.year}{' '}
+                                  </address>
+                                </p>
+                              </li>
+                            );
+                          })}
+                        </ul>
                       </div>
                     </div>
                   </div>

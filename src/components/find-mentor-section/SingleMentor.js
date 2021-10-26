@@ -77,7 +77,7 @@ const SingleMentorCard = ({
               <MentorCardButtons
                 showModalBtn={showModalBtn}
                 classes='mentor-card-btn'
-                text='Chat with me'
+                text='Book a free session'
                 smtext=''
               />
             </div>

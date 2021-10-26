@@ -175,6 +175,61 @@ const Showcase = () => {
           </div>
         </div>
       </div>
+
+      <div className='showcase-links d-xxl-block d-none'>
+        <ul className='navbar-nav d-flex flex-column justify-content-center align-items-center'>
+          <li className='nav-item'>
+            <a
+              className='nav-link social-nav-link'
+              rel='noreferrer'
+              target='_blank'
+              href='https://www.facebook.com/mentorkart/'
+            >
+              <i className='fab fa-facebook'></i>
+            </a>
+          </li>
+          <li className='nav-item'>
+            <a
+              className='nav-link social-nav-link'
+              rel='noreferrer'
+              target='_blank'
+              href='https://twitter.com/mentor_kart'
+            >
+              <i className='fab fa-twitter'></i>
+            </a>
+          </li>
+          <li className='nav-item'>
+            <a
+              className='nav-link social-nav-link'
+              rel='noreferrer'
+              target='_blank'
+              href='https://www.linkedin.com/company/mentorkart/'
+            >
+              <i className='fab fa-linkedin social-icons'></i>
+            </a>
+          </li>
+          <li className='nav-item'>
+            <a
+              className='nav-link social-nav-link'
+              rel='noreferrer'
+              target='_blank'
+              href='https://www.youtube.com/channel/UCI3bjjLPNzth2RrSyQo8acw'
+            >
+              <i className='fab fa-youtube social-icons'></i>
+            </a>
+          </li>
+          <li className='nav-item'>
+            <a
+              className='nav-link social-nav-link'
+              rel='noreferrer'
+              target='_blank'
+              href='#'
+            >
+              <i className='fab fa-instagram social-icons'></i>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

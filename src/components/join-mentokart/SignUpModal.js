@@ -211,21 +211,6 @@ const SignUpModal = (props) => {
                     />
                   </div>
                 </div>
-
-                <div className='form-group mb-3'>
-                  <input
-                    type='text'
-                    name='username'
-                    id='username'
-                    value={username}
-                    onChange={(e) => {
-                      SetUsername(e.target.value);
-                    }}
-                    required
-                    className='form-control form-control-sm'
-                    placeholder='Username'
-                  />
-                </div>
                 <div className='form-group mb-3'>
                   <input
                     type='email'
