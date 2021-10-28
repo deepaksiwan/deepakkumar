@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SignUpModal from '../join-mentokart/SignUpModal';
 import Modal from 'react-modal';
-
+import { Link } from 'react-router-dom';
 // import Swiper core and required modules
 import SwiperCore, { A11y, Autoplay } from 'swiper';
 
@@ -115,25 +115,40 @@ const Showcase = () => {
                 }}
               >
                 <SwiperSlide>
-                  <img
-                    className='fluid-img'
-                    src='/images/showcase-right.png'
-                    alt=''
-                  />
+                  <Link
+                    to={{ pathname: 'https://app.mentorkart.com' }}
+                    target='_blank'
+                  >
+                    <img
+                      className='fluid-img'
+                      src='/images/showcase-right.png'
+                      alt=''
+                    />
+                  </Link>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <img
-                    className='fluid-img'
-                    src='/images/showcase-right.png'
-                    alt=''
-                  />
+                  <Link
+                    to={{ pathname: 'https://app.mentorkart.com' }}
+                    target='_blank'
+                  >
+                    <img
+                      className='fluid-img'
+                      src='/images/showcase-right.png'
+                      alt=''
+                    />
+                  </Link>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <img
-                    className='fluid-img'
-                    src='/images/showcase-right.png'
-                    alt=''
-                  />
+                  <Link
+                    to={{ pathname: 'https://app.mentorkart.com' }}
+                    target='_blank'
+                  >
+                    <img
+                      className='fluid-img'
+                      src='/images/showcase-right.png'
+                      alt=''
+                    />
+                  </Link>
                 </SwiperSlide>
               </Swiper>
             </div>
@@ -151,25 +166,40 @@ const Showcase = () => {
               }}
             >
               <SwiperSlide>
-                <img
-                  className='img-fluid'
-                  src='/images/showcase-right.png'
-                  alt=''
-                />
+                <Link
+                  to={{ pathname: 'https://app.mentorkart.com' }}
+                  target='_blank'
+                >
+                  <img
+                    className='fluid-img'
+                    src='/images/showcase-right.png'
+                    alt=''
+                  />
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <img
-                  className='img-fluid'
-                  src='/images/showcase-right.png'
-                  alt=''
-                />
+                <Link
+                  to={{ pathname: 'https://app.mentorkart.com' }}
+                  target='_blank'
+                >
+                  <img
+                    className='fluid-img'
+                    src='/images/showcase-right.png'
+                    alt=''
+                  />
+                </Link>
               </SwiperSlide>
               <SwiperSlide>
-                <img
-                  className='img-fluid'
-                  src='/images/showcase-right.png'
-                  alt=''
-                />
+                <Link
+                  to={{ pathname: 'https://app.mentorkart.com' }}
+                  target='_blank'
+                >
+                  <img
+                    className='fluid-img'
+                    src='/images/showcase-right.png'
+                    alt=''
+                  />
+                </Link>
               </SwiperSlide>
             </Swiper>
           </div>
@@ -223,7 +253,7 @@ const Showcase = () => {
               className='nav-link social-nav-link'
               rel='noreferrer'
               target='_blank'
-              href='#'
+              href=''
             >
               <i className='fab fa-instagram social-icons'></i>
             </a>

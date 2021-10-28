@@ -3,25 +3,25 @@ import Footer from '../footer/Footer';
 import MyNavbar from '../header-section/MyNavbar';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  listProgram,
-  listStudentCourse,
-  listProfessionalCourse,
-  listEntrepreneurCourse,
-} from '../../redux/actions/programActions';
-
+  listPackages,
+  listStudentPackages,
+  listProfessionalPackages,
+  listEntrepreneurPackages,
+} from '../../redux/actions/packagesActions';
 import Modal from 'react-modal';
+import Parser from 'react-html-parser';
 
 import SignUpModal from '../join-mentokart/SignUpModal';
 
-const Courses = () => {
+const Packages = () => {
   const [showModal, setShowModal] = useState(false);
   const showModalBtn = (bool) => {
     setShowModal(bool);
   };
 
   const dispatch = useDispatch();
-  const programList = useSelector((state) => state.programList);
-  const { program } = programList;
+  const packagesList = useSelector((state) => state.packagesList);
+  const { packages } = packagesList;
 
   const [sort, setSort] = useState('');
 
@@ -31,15 +31,15 @@ const Courses = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(listProgram());
+    dispatch(listPackages());
     if (sort === 'student') {
-      dispatch(listStudentCourse());
+      dispatch(listStudentPackages());
     }
     if (sort === 'professional') {
-      dispatch(listProfessionalCourse());
+      dispatch(listProfessionalPackages());
     }
     if (sort === 'entrepreneur') {
-      dispatch(listEntrepreneurCourse());
+      dispatch(listEntrepreneurPackages());
     }
   }, [dispatch, sort]);
 
@@ -48,7 +48,7 @@ const Courses = () => {
       <MyNavbar />
       <div className='courses-head'>
         <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-4 py-3'>
-          <h1>Programs and courses</h1>
+          <h1>Packagess and courses</h1>
           <form
             action='/search-blogs'
             className='courses-search d-flex justify-content-between align-items-center'
@@ -60,7 +60,7 @@ const Courses = () => {
               <input
                 type='text'
                 name='search-text'
-                placeholder='Search Course'
+                placeholder='Search Packages'
               />
             </div>
           </form>
@@ -93,7 +93,7 @@ const Courses = () => {
       <div className='courses-content'>
         <div id='#all' className='blogs-cards-two container py-5'>
           <div className='row'>
-            {program.map((course, index) => {
+            {packages.map((course, index) => {
               return (
                 <div
                   className='col-lg-4 col-md-6 col-12 px-lg-3 px-sm-2 px-3 mb-5'
@@ -130,12 +130,14 @@ const Courses = () => {
                         <div className='d-flex justify-content-between align-items-center'>
                           <div>
                             <h2 className='mt-0 mb-0 pe-3'>
-                              {course.mk_course_name}
+                              {course.package_name}
                             </h2>
                           </div>
-                          <h6 className='mb-0'>₹ {course.price} /-</h6>
+                          <h6 className='mb-0'>₹ {course.price_INR} /-</h6>
                         </div>
-                        <p className='mt-2 mb-3'>{course.description}</p>
+                        <div className='mt-2 mb-3'>
+                          {Parser(course.description)}
+                        </div>
                         <div className='row'>
                           <button
                             onClick={() => {
@@ -178,4 +180,4 @@ const Courses = () => {
     </div>
   );
 };
-export default Courses;
+export default Packages;

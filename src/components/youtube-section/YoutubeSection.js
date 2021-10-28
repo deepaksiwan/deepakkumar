@@ -58,7 +58,7 @@ const YoutubeSection = () => {
           >
             {youtube[0] &&
               youtube[0].youtube &&
-              youtube[0].youtube.map((video, index) => {
+              youtube[0].youtube.slice(0, 6).map((video, index) => {
                 return (
                   <SwiperSlide key={index}>
                     <div className='youtube-video'>

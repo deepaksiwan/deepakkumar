@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-import Axios from 'axios';
+import PasswordStrengthBar from 'react-password-strength-bar';
+
+import { signIn } from '../../redux/actions/loginActions';
+import { signUp } from '../../redux/actions/loginActions';
+import { useDispatch } from 'react-redux';
 
 const SignInModal = (props) => {
+  const dispatch = useDispatch();
   const [btnEnabled, setBtnEnabled] = useState(false);
   const [btnClass, setBtnClass] = useState('disabled');
   const [email, SetEmail] = useState('');
@@ -14,11 +19,11 @@ const SignInModal = (props) => {
   const [lastname, SetLastname] = useState('');
   const [username, SetUsername] = useState('');
 
-  const [signup_alert, SetSignupAlert] = useState(false);
-  const [signin_alert, SetSigninAlert] = useState(false);
-
   const [SignInEmail, SetSignInEmail] = useState('');
   const [SignInPassword, SetSignInPassword] = useState('');
+
+  const [signup_alert, SetSignupAlert] = useState(false);
+  const [signin_alert, SetSigninAlert] = useState(false);
 
   const [showSignUp, setShowSignUp] = useState(false);
   const [showSignIn, setShowSignIn] = useState(true);
@@ -27,81 +32,39 @@ const SignInModal = (props) => {
     setShowSignIn(true);
     setShowSignUp(false);
   };
+
   const ToggleSignUp = () => {
     setShowSignIn(false);
     setShowSignUp(true);
   };
 
   const SignInSubmit = (e) => {
-    Axios.post('https://mentorkart.org/api/login', {
-      email: SignInEmail,
-      password: SignInPassword,
-    }).then((res, err) => {
-      if (!err) {
-        console.log(res);
-        if (res.status === 200) {
-          SetSigninAlert(true);
-          console.log('hello');
-          SetSignInEmail('');
-          SetSignInPassword('');
-        }
-      } else {
-        console.log(err);
-      }
-    });
+    dispatch(
+      signIn({
+        email: SignInEmail,
+        password: SignInPassword,
+      })
+    );
   };
   const SignUpSubmit = (e) => {
-    console.log(
-      username,
-      phone.slice(2, 12),
-      email,
-      password,
-      confirm,
-      firstname,
-      lastname
+    dispatch(
+      signUp({
+        username: username,
+        mobile_no: +phone.slice(2, 12),
+        email: email,
+        password: password,
+        password_confirmation: confirm,
+        user_type: 'MENTEE',
+        first_name: firstname,
+        last_name: lastname,
+        country_code: 91,
+        country_name: 'INDIA',
+      })
     );
-    Axios.post('https://mentorkart.org/api/register', {
-      username: username,
-      mobile_no: +phone.slice(2, 12),
-      email: email,
-      password: password,
-      password_confirmation: confirm,
-      user_type: 'MENTEE',
-      first_name: firstname,
-      last_name: lastname,
-      country_code: 91,
-      country_name: 'INDIA',
-    }).then((res, err) => {
-      if (!err) {
-        console.log(res);
-        if (res.data.status === true) {
-          SetSignupAlert(true);
-          SetEmail('');
-          SetConfirm('');
-          SetFirstname('');
-          SetLastname('');
-          SetPassword('');
-          SetPhone('');
-          SetUsername('');
-        }
-      } else {
-        console.log(err);
-      }
-    });
   };
 
-  if (signup_alert === true) {
-    setTimeout(() => {
-      SetSignupAlert(false);
-      window.location.reload();
-    }, 3000);
-  }
-  if (signin_alert === true) {
-    setTimeout(() => {
-      SetSigninAlert(false);
-      window.location.reload();
-    }, 3000);
-  }
+  const [passwordType1, SetPasswordType1] = useState('password');
+  const [passwordType2, SetPasswordType2] = useState('password');
 
   return (
     <div className='signup-modal'>
@@ -125,7 +88,7 @@ const SignInModal = (props) => {
             >
               <fieldset>
                 <legend className='d-flex justify-content-between align-items-center mb-3'>
-                  <h2>Who you are?</h2>
+                  <h2>I am...</h2>
                   <button
                     onClick={() => {
                       props.showModalBtn(false);
@@ -165,7 +128,7 @@ const SignInModal = (props) => {
                       <input
                         type='radio'
                         className='form-check-input'
-                        name='Entrepreneur'
+                        name='optionsRadios'
                         id='Entrepreneur'
                         value='Entrepreneur'
                       />
@@ -236,33 +199,70 @@ const SignInModal = (props) => {
                     onChange={(phone) => SetPhone(phone)}
                   />
                 </div>
-                <div className='form-group mb-3'>
-                  <input
-                    required
-                    type='password'
-                    name='password'
-                    id='password'
-                    value={password}
-                    onChange={(e) => {
-                      SetPassword(e.target.value);
-                    }}
-                    className='form-control form-control-sm'
-                    placeholder='Password'
-                  />
+                <div className='form-group mb-0'>
+                  <div className='password-div'>
+                    <input
+                      required
+                      type={passwordType1}
+                      name='password'
+                      id='password'
+                      value={password}
+                      onChange={(e) => {
+                        SetPassword(e.target.value);
+                      }}
+                      className='form-control form-control-sm'
+                      placeholder='Password'
+                    />
+                    <button
+                      className='btn'
+                      onClick={(e) => {
+                        if (passwordType1 === 'password') {
+                          SetPasswordType1('text');
+                        } else {
+                          SetPasswordType1('password');
+                        }
+                      }}
+                    >
+                      {passwordType1 === 'password' ? (
+                        <i class='fas fa-eye'></i>
+                      ) : (
+                        <i class='fas fa-eye-slash'></i>
+                      )}
+                    </button>
+                  </div>
+                  <PasswordStrengthBar password={password} />
                 </div>
                 <div className='form-group mb-3'>
-                  <input
-                    required
-                    type='password'
-                    name='confirm-password'
-                    id='confirm-password'
-                    value={confirm}
-                    onChange={(e) => {
-                      SetConfirm(e.target.value);
-                    }}
-                    className='form-control form-control-sm'
-                    placeholder='Confirm password'
-                  />
+                  <div className='password-div'>
+                    <input
+                      required
+                      type={passwordType2}
+                      name='confirm-password'
+                      id='confirm-password'
+                      value={confirm}
+                      onChange={(e) => {
+                        SetConfirm(e.target.value);
+                      }}
+                      className='form-control form-control-sm'
+                      placeholder='Confirm password'
+                    />
+                    <button
+                      className='btn'
+                      onClick={(e) => {
+                        if (passwordType2 === 'password') {
+                          SetPasswordType2('text');
+                        } else {
+                          SetPasswordType2('password');
+                        }
+                      }}
+                    >
+                      {passwordType2 === 'password' ? (
+                        <i class='fas fa-eye'></i>
+                      ) : (
+                        <i class='fas fa-eye-slash'></i>
+                      )}
+                    </button>
+                  </div>
                 </div>
                 <div className='form-check mb-3 align-items-end'>
                   <input
@@ -363,7 +363,7 @@ const SignInModal = (props) => {
                 </div>
                 <div className='row px-2'>
                   <button type='submit' className='btn btn-dark'>
-                    Get OTP
+                    Login
                   </button>
                 </div>
               </fieldset>

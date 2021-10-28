@@ -1,22 +1,24 @@
 import axios from 'axios';
 import {
-  PROGRAM_GET_REQUEST,
-  PROGRAM_GET_SUCCESS,
-  PROGRAM_GET_FAIL,
-} from '../constants/programConstants';
+  PACKAGES_GET_REQUEST,
+  PACKAGES_GET_SUCCESS,
+  PACKAGES_GET_FAIL,
+} from '../constants/packagesConstants';
 
-export const listProgram = () => async (dispatch) => {
+export const listPackages = () => async (dispatch) => {
   try {
-    dispatch({ type: PROGRAM_GET_REQUEST });
-    const { data } = await axios.get('https://mentorkart.org/api/sso-courses');
+    dispatch({ type: PACKAGES_GET_REQUEST });
+    const { data } = await axios.get(
+      'https://mentorkart.org/api/sso-get-packages'
+    );
 
     dispatch({
-      type: PROGRAM_GET_SUCCESS,
+      type: PACKAGES_GET_SUCCESS,
       payload: data.data,
     });
   } catch (error) {
     dispatch({
-      type: PROGRAM_GET_FAIL,
+      type: PACKAGES_GET_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -25,22 +27,24 @@ export const listProgram = () => async (dispatch) => {
   }
 };
 
-export const listStudentCourse = () => async (dispatch) => {
+export const listStudentPackages = () => async (dispatch) => {
   try {
-    dispatch({ type: PROGRAM_GET_REQUEST });
-    const { data } = await axios.get('https://mentorkart.org/api/sso-courses');
+    dispatch({ type: PACKAGES_GET_REQUEST });
+    const { data } = await axios.get(
+      'https://mentorkart.org/api/sso-get-packages'
+    );
     const fil = data.data;
     const std = fil.filter((x) =>
       x.user_category.split(',').includes('STUDENT')
     );
 
     dispatch({
-      type: PROGRAM_GET_SUCCESS,
+      type: PACKAGES_GET_SUCCESS,
       payload: std,
     });
   } catch (error) {
     dispatch({
-      type: PROGRAM_GET_FAIL,
+      type: PACKAGES_GET_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -49,22 +53,24 @@ export const listStudentCourse = () => async (dispatch) => {
   }
 };
 
-export const listProfessionalCourse = () => async (dispatch) => {
+export const listProfessionalPackages = () => async (dispatch) => {
   try {
-    dispatch({ type: PROGRAM_GET_REQUEST });
-    const { data } = await axios.get('https://mentorkart.org/api/sso-courses');
+    dispatch({ type: PACKAGES_GET_REQUEST });
+    const { data } = await axios.get(
+      'https://mentorkart.org/api/sso-get-packages'
+    );
     const fil = data.data;
     const std = fil.filter((x) =>
       x.user_category.split(',').includes('PROFESSIONAL')
     );
 
     dispatch({
-      type: PROGRAM_GET_SUCCESS,
+      type: PACKAGES_GET_SUCCESS,
       payload: std,
     });
   } catch (error) {
     dispatch({
-      type: PROGRAM_GET_FAIL,
+      type: PACKAGES_GET_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -73,22 +79,24 @@ export const listProfessionalCourse = () => async (dispatch) => {
   }
 };
 
-export const listEntrepreneurCourse = () => async (dispatch) => {
+export const listEntrepreneurPackages = () => async (dispatch) => {
   try {
-    dispatch({ type: PROGRAM_GET_REQUEST });
-    const { data } = await axios.get('https://mentorkart.org/api/sso-courses');
+    dispatch({ type: PACKAGES_GET_REQUEST });
+    const { data } = await axios.get(
+      'https://mentorkart.org/api/sso-get-packages'
+    );
     const fil = data.data;
     const std = fil.filter((x) =>
       x.user_category.split(',').includes('ENTREPRENEUR')
     );
 
     dispatch({
-      type: PROGRAM_GET_SUCCESS,
+      type: PACKAGES_GET_SUCCESS,
       payload: std,
     });
   } catch (error) {
     dispatch({
-      type: PROGRAM_GET_FAIL,
+      type: PACKAGES_GET_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

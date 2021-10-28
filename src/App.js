@@ -27,6 +27,10 @@ import SingleBlog from './components/SingleBlog';
 import FindAMentor from './components/FindAMentor';
 import YoutubeSection from './components/youtube-section/YoutubeSection';
 import SubscriptionSection from './components/subscription-section/SubscriptionSection';
+import Packages from './components/packages-section/Packages';
+import PackagesSection from './components/packages-section/PackagesSection';
+import DetailsSection from './components/details-section/DetailsSection';
+import CampusSection from './components/campus/CampusSection';
 
 function App() {
   return (
@@ -34,7 +38,9 @@ function App() {
       <Switch>
         <Route path='/' exact>
           <Header />
+          <PackagesSection />
           <FindMentorSection />
+          <DetailsSection />
           <BannerSection />
           <JoinMentorkart />
           <ProgramsSection />
@@ -43,6 +49,7 @@ function App() {
           <Testimonials />
           <FeaturedSection />
           <BlogsSection />
+          <CampusSection />
           <YoutubeSection />
           <Footer />
         </Route>
@@ -51,6 +58,9 @@ function App() {
         </Route>
         <Route path='/courses'>
           <Courses />
+        </Route>
+        <Route path='/packages'>
+          <Packages />
         </Route>
         <Route path='/be-a-mentor'>
           <BeAMentor />

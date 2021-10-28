@@ -12,7 +12,7 @@
 
   .navbar,
   .showcase-section {
-    background: #fdf0e9 !important;
+    background: #fffdf8 !important;
   }
   .navbar-light .navbar-nav .nav-link:hover {
     transform: scale(1.02);
@@ -384,7 +384,6 @@
     border-radius: 15px;
     height: 30px;
     line-height: 0.7rem;
-    font-size: 0.6rem;
   }
 
   .find-mentor .mentor-card {
@@ -446,5 +445,18 @@
   .find-mentor .mentor-card div span,
   .mentors-card .mentor-card div span {
     font-size: 13.5px;
+  }
+  .details-section .details-card {
+    height: 150px;
+  }
+  .details-section .details-card h1 {
+    font-size: 30px;
+  }
+  .details-section .details-card p.lead {
+    font-size: 14.5px;
+  }
+  .programs .programs-cards .img {
+    height: 190px;
+    width: 210px;
   }
 }

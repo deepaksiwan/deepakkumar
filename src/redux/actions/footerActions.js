@@ -29,7 +29,7 @@ export const listFooter = ({email}) => async( dispatch ) =>
     {
         dispatch( {
             type: FOOTER_GET_FAIL,
-            payload: error
+            payload: error.response && error.response.data.message ? error.response.data.message : error.response
         } )
         
     }

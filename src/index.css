@@ -7,11 +7,11 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  background: #fdf0e9 !important;
+  background: #fffdf8 !important;
   font-family: 'DM Sans', sans-serif !important;
   font-weight: 400 !important;
   min-height: 12vh;
-  padding: 1rem auto !important;
+  padding: 15px auto !important;
   z-index: 5000;
 }
 a {
@@ -55,7 +55,7 @@ a {
   background-color: #3d3d3d;
   margin-right: 1rem;
   padding: 4px 10px !important;
-  color: #fdf0e9 !important;
+  color: #fffdf8 !important;
   border-radius: 5px;
   font-size: 14px !important;
   font-weight: 400 !important;
@@ -67,7 +67,7 @@ a {
 }
 .showcase-section {
   position: relative;
-  background: #fdf0e9;
+  background: #fffdf8;
   margin-top: 12vh;
   height: calc(100vh - 12vh);
 }
@@ -303,17 +303,30 @@ a {
   overflow: hidden;
   position: relative;
 }
-.find-mentor .mentor-card .img .category-tags {
+.programs .programs-cards .img {
+  height: 190px;
+  width: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.find-mentor .mentor-card .img .category-tags,
+.programs .programs-cards .img .category-tags {
   position: absolute;
   bottom: 10px;
   left: 10px;
 }
-.find-mentor .mentor-card .category-tags .btn {
+.find-mentor .mentor-card .category-tags .btn,
+.programs .programs-cards .category-tags .btn {
   background-color: #fff;
   color: #3d3d3d !important;
   font-weight: 700 !important;
 }
-.find-mentor .mentor-card img {
+.find-mentor .mentor-card img,
+.programs .programs-cards img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
 }
@@ -330,6 +343,9 @@ a {
 .courses .program-card p {
   font-size: 14.5px;
   color: #3d3d3d;
+}
+.mentors-card .mentor-card div span {
+  color: #f07867;
 }
 .find-mentor .mentor-card div span.view-profile {
   color: #f07867;
@@ -600,7 +616,7 @@ a {
   font-family: 'Poppins', sans-serif;
   color: #000;
   background: linear-gradient(281.79deg, #ffffff -5.33%, #ffffff 102.53%);
-  border-radius: 30px;
+  border-radius: 10px;
 }
 .programs .program-card h2 {
   font-size: 22px;
@@ -627,7 +643,25 @@ a {
 .programs .programs-cards .swiper-container {
   height: 260px;
 }
-
+.details-section .details-card {
+  background: #fefefe;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+  border-radius: 10px;
+  height: 225px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.details-section .details-card h1 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #222;
+}
+.details-section .details-card p.lead {
+  font-size: 16.5px;
+  color: #3d3d3d;
+}
 /* PARTNERS  */
 .partners h1 {
   font-family: 'Poppins', sans-serif;
@@ -699,7 +733,7 @@ a {
 .testimonials-section .testimonial-card {
   font-family: 'DM Sans', sans-serif;
   font-weight: 400;
-  background: #fdf0e9;
+  background: #fffdf8;
   border-radius: 8px;
   position: relative;
 }
@@ -784,7 +818,7 @@ a {
 }
 
 .blogs-section .blog-bottom {
-  background-color: #fdf0e9;
+  background-color: #fffdf8;
   text-align: left;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
@@ -917,8 +951,8 @@ a {
 .courses .courses-head,
 .mentors .mentors-head {
   margin-top: 10vh !important;
-  background: linear-gradient(#fdf0e9, #fdf0e930);
-  /* background: #fdf0e9; */
+  background: linear-gradient(#fffdf8, #fffdf830);
+  /* background: #fffdf8; */
 }
 .our-blogs .our-blogs-head h1,
 .courses .courses-head h1,
@@ -1012,10 +1046,15 @@ a {
 .courses .mentor-card .category-tags .btn,
 .courses .mentor-card .category-tags .btn,
 .mentors-card .mentor-card .category-tags .btn,
-.courses .program-card .img .category-tags .btn {
+.courses .program-card .img .category-tags .btn,
+.programs .programs-cards .img .category-tags .btn {
   font-size: 8.5px;
 }
-
+.programs .programs-cards .img .category-tags .btn {
+  font-size: 7.5px;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
 .our-blogs img,
 .mentors img,
 .courses img {
@@ -1129,7 +1168,7 @@ a {
 .faq header,
 .mentor-profile header {
   margin-top: 10vh !important;
-  background: linear-gradient(#fdf0e9, #fdf0e930);
+  background: linear-gradient(#fffdf8, #fffdf830);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -1244,12 +1283,14 @@ a {
 }
 
 .mentors-card .mentor-card .img .category-tags,
-.courses .program-card .img .category-tags {
+.courses .program-card .img .category-tags,
+.programs .programs-cards .img .category-tags {
   position: absolute;
   bottom: 10px;
   left: 10px;
 }
-.mentors-card .mentor-card .img .category-tags .btn {
+.mentors-card .mentor-card .img .category-tags .btn,
+.programs .programs-cards .img .category-tags .btn {
   background: #fff !important;
   color: #3d3d3d !important;
   font-weight: 700;
@@ -1476,8 +1517,9 @@ a {
   font-weight: 400;
   font-size: 15px;
 }
-.mentor-profile .accordion p address {
+.mentor-profile .accordion address {
   font-size: 12.5px;
+  color: #5e5e5e;
 }
 .mentor-profile .accordion h6 {
   font-weight: 17.5px;
@@ -1764,4 +1806,13 @@ input[type='number']:focus,
 [type='tel'].form-control:focus,
 [contenteditable].form-control:focus {
   box-shadow: inset 0 -1px 0 #ddd;
+}
+
+.password-div {
+  position: relative;
+}
+.password-div .btn {
+  position: absolute;
+  right: 10px;
+  bottom: -5px;
 }

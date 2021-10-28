@@ -4,6 +4,9 @@ import {
   MENTOR_LIST_SUCCESS,
   MENTOR_LIST_FAIL,
   MENTOR_LIST_SEARCH,
+  MENTOR_LIST_DETAILS_REQUEST,
+  MENTOR_LIST_DETAILS_SUCCESS,
+  MENTOR_LIST_DETAILS_FAIL,
 } from '../constants/mentorConstants';
 
 export const listMentor = () => async (dispatch) => {
@@ -13,7 +16,6 @@ export const listMentor = () => async (dispatch) => {
       'https://mentorkart.org/api/sso-mentor-list'
     );
     const fil = data.data;
-    // // console.log(fil)
 
     dispatch({
       type: MENTOR_LIST_SUCCESS,
@@ -22,7 +24,10 @@ export const listMentor = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: MENTOR_LIST_FAIL,
-      payload: error,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
     });
   }
 };
@@ -38,6 +43,7 @@ export const listStudentMentor = () => async (dispatch) => {
       if (x.user_categories) {
         return x.user_categories.split(',').includes('STUDENT');
       }
+      return x.user_categories;
     });
 
     dispatch({
@@ -47,7 +53,10 @@ export const listStudentMentor = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: MENTOR_LIST_FAIL,
-      payload: error,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
     });
   }
 };
@@ -63,6 +72,7 @@ export const listProfessionalMentor = () => async (dispatch) => {
       if (x.user_categories) {
         return x.user_categories.split(',').includes('PROFESSIONAL');
       }
+      return x.user_categories;
     });
 
     dispatch({
@@ -72,12 +82,15 @@ export const listProfessionalMentor = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: MENTOR_LIST_FAIL,
-      payload: error,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
     });
   }
 };
 
-export const listEnterpreneurMentor = () => async (dispatch) => {
+export const listEntrepreneurMentor = () => async (dispatch) => {
   try {
     dispatch({ type: MENTOR_LIST_REQUEST });
     const { data } = await axios.get(
@@ -88,6 +101,7 @@ export const listEnterpreneurMentor = () => async (dispatch) => {
       if (x.user_categories) {
         return x.user_categories.split(',').includes('ENTREPRENEUR');
       }
+      return x.user_categories;
     });
 
     dispatch({
@@ -97,7 +111,10 @@ export const listEnterpreneurMentor = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: MENTOR_LIST_FAIL,
-      payload: error,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
     });
   }
 };
@@ -113,6 +130,7 @@ export const searchMentor = (query) => async (dispatch) => {
       if (x.area_of_experties) {
         return x.area_of_experties.toLowerCase().includes(query.toLowerCase());
       }
+      return x.user_categories;
     });
     console.log(std);
 
@@ -123,7 +141,33 @@ export const searchMentor = (query) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: MENTOR_LIST_FAIL,
-      payload: error,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
+    });
+  }
+};
+
+export const listMentorDetails = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: MENTOR_LIST_DETAILS_REQUEST });
+    const { data } = await axios.get(
+      `https://mentorkart.org/api/sso-mentor/${id}`
+    );
+    const fil = data.data;
+
+    dispatch({
+      type: MENTOR_LIST_DETAILS_SUCCESS,
+      payload: fil,
+    });
+  } catch (error) {
+    dispatch({
+      type: MENTOR_LIST_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
     });
   }
 };

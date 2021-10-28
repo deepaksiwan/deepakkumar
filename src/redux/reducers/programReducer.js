@@ -1,27 +1,18 @@
-import
-    {
-        PROGRAM_GET_REQUEST,
-        PROGRAM_GET_SUCCESS,
-        PROGRAM_GET_FAIL,
+import {
+  PROGRAM_GET_REQUEST,
+  PROGRAM_GET_SUCCESS,
+  PROGRAM_GET_FAIL,
+} from '../constants/programConstants';
 
-       
-} from "../constants/programConstants";
-
-export const program = (state={program:[]}, action) =>
-{
-    switch ( action.type )
-    {
-        case PROGRAM_GET_REQUEST:
-            return {loading: true, program: []}
-        case PROGRAM_GET_SUCCESS:
-            return {loading: false, program: action.payload}
-        case PROGRAM_GET_FAIL:
-            return {loading: false, error: action.payload}
-        default:
-            return state
-    }
-}
-
-
-
-
+export const program = (state = { program: [] }, action) => {
+  switch (action.type) {
+    case PROGRAM_GET_REQUEST:
+      return { loading: true, program: [] };
+    case PROGRAM_GET_SUCCESS:
+      return { loading: false, program: action.payload };
+    case PROGRAM_GET_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};

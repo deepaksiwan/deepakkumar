@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import SignUpModal from '../join-mentokart/SignUpModal';
 import Modal from 'react-modal';
+import Parser from 'react-html-parser';
 
-const ProgramCard = ({ data }) => {
+const PackagesCard = ({ data }) => {
   const [showModal, setShowModal] = useState(false);
 
   const showModalBtn = (bool) => {
@@ -34,9 +35,11 @@ const ProgramCard = ({ data }) => {
 
         <div className='row align-items-center'>
           <div className='col-6 ps-lg-4'>
-            <h2>{data.mk_course_name}</h2>
-            <h1>₹ {data.price} /-</h1>
-            <p className='mb-md-3 mb-2'>{data.description}</p>
+            <h2>{data.package_name}</h2>
+            <h1>₹ {data.price_INR} /-</h1>
+            <p className='mb-md-3 mb-2'>
+              {Parser(data.description.substring(0, 100))}
+            </p>
             <button
               onClick={() => {
                 setShowModal(true);
@@ -79,4 +82,4 @@ const ProgramCard = ({ data }) => {
   );
 };
 
-export default ProgramCard;
+export default PackagesCard;

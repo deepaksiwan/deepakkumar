@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-import Axios from 'axios';
+import { beMentor } from '../redux/actions/asCampusActions';
+import { useDispatch } from 'react-redux';
 
 import Footer from './footer/Footer';
 import MyNavbar from './header-section/MyNavbar';
 
 const BeAMentor = () => {
+  const dispatch = useDispatch();
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -27,36 +29,36 @@ const BeAMentor = () => {
   const [designation, SetDesignation] = useState('');
   const [about, SetAbout] = useState('');
   const [getToKnow, SetGetToKnow] = useState('');
+  const [grad_college, SetGradCollege] = useState('');
+  const [grad_degree, SetGradDegree] = useState('');
+  const [grad_year, SetGradYear] = useState('');
+  const [post_grad_college, SetPostGradCollege] = useState('');
+  const [post_grad_degree, SetPostGradDegree] = useState('');
+  const [post_grad_year, SetPostGradYear] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    Axios.post('https://www.test.pinsoutinnovation.com/be-a-mentor', {
-      name: name,
-      email: email,
-      phone: phone,
-      gender: gender === 1 ? 'Male' : 'Female',
-      linkedIn: linkedIn,
-      dob: dob,
-      address: address,
-      interests: JSON.stringify(interests),
-      whomToMentor: JSON.stringify(whomToMentor),
-      industry: industry,
-      otherIndustry: otherIndustry,
-      firstPref: firstPref,
-      secondPref: secondPref,
-      thirdPref: thirdPref,
-      designation: designation,
-      about: about,
-      getToKnow: getToKnow,
-    }).then((res) => {
-      console.log(res.data);
-      if (res.data.stat === 1) {
-        window.location.reload();
-      } else {
-        alert(res.data.msg);
-      }
-    });
+    dispatch(
+      beMentor({
+        name: name,
+        email: email,
+        phone: phone,
+        gender: gender === 1 ? 'Male' : 'Female',
+        linkedIn: linkedIn,
+        dob: dob,
+        address: address,
+        interests: JSON.stringify(interests),
+        whomToMentor: JSON.stringify(whomToMentor),
+        industry: industry,
+        otherIndustry: otherIndustry,
+        firstPref: firstPref,
+        secondPref: secondPref,
+        thirdPref: thirdPref,
+        designation: designation,
+        about: about,
+        getToKnow: getToKnow,
+      })
+    );
   };
 
   const toggleInterests = (x) => {
@@ -109,6 +111,7 @@ const BeAMentor = () => {
                     <input
                       type='text'
                       name='FullName'
+                      required
                       id='full-name'
                       value={name}
                       onChange={(e) => {
@@ -125,6 +128,7 @@ const BeAMentor = () => {
                     <input
                       type='email'
                       name='Email'
+                      required
                       id='email'
                       value={email}
                       onChange={(e) => {
@@ -163,6 +167,7 @@ const BeAMentor = () => {
                               type='radio'
                               className='form-check-input'
                               name='Gender'
+                              required
                               id='male'
                               value={gender}
                               onClick={(e) => {
@@ -202,6 +207,7 @@ const BeAMentor = () => {
                       type='text'
                       name='LinkedIn'
                       id='linked-in'
+                      required
                       className='form-control'
                       placeholder='Enter Your Linked In URL'
                       value={linkedIn}
@@ -216,6 +222,7 @@ const BeAMentor = () => {
                       className='form-control'
                       type='date'
                       name='DOB'
+                      required
                       id='dob'
                       value={dob}
                       onChange={(e) => SetDOB(e.target.value)}
@@ -242,7 +249,7 @@ const BeAMentor = () => {
                     <input
                       className='form-check-input'
                       type='checkbox'
-                      value='entrepreneurship'
+                      value='Entrepreneurship'
                       id='entrepreneurship'
                       onChange={(e) => toggleInterests(e.target.value)}
                     />
@@ -250,7 +257,7 @@ const BeAMentor = () => {
                       className='form-check-label'
                       htmlFor='entrepreneurship'
                     >
-                      entrepreneurship
+                      Entrepreneurship
                     </label>
                   </div>
                   <div className='form-check me-5'>
@@ -355,12 +362,12 @@ const BeAMentor = () => {
                     <input
                       className='form-check-input'
                       type='checkbox'
-                      value='entrepreneurs'
+                      value='Entrepreneurs'
                       id='entrepreneurs'
                       onChange={(e) => toggleWhom(e.target.value)}
                     />
                     <label className='form-check-label' htmlFor='entrepreneurs'>
-                      entrepreneurs
+                      Entrepreneurs
                     </label>
                   </div>
                   <div className='form-check me-5'>
@@ -381,6 +388,7 @@ const BeAMentor = () => {
                 <label htmlFor=''>Select Your Industry</label>
                 <select
                   name='industry'
+                  required
                   className='form-select'
                   value={industry}
                   onChange={(e) => SetIndustry(e.target.value)}
@@ -531,6 +539,7 @@ const BeAMentor = () => {
                 <select
                   name='first-pref'
                   id='first-pref'
+                  required
                   value={firstPref}
                   onChange={(e) => SetFirstPref(e.target.value)}
                   className='form-select'
@@ -919,6 +928,7 @@ const BeAMentor = () => {
                 <select
                   name='first-pref'
                   id='first-pref'
+                  required
                   value={secondPref}
                   onChange={(e) => SetSecondPref(e.target.value)}
                   className='form-select'
@@ -1307,6 +1317,7 @@ const BeAMentor = () => {
                 <select
                   name='first-pref'
                   id='first-pref'
+                  required
                   value={thirdPref}
                   onChange={(e) => SetThirdPref(e.target.value)}
                   className='form-select'
@@ -1693,12 +1704,92 @@ const BeAMentor = () => {
                 <input
                   type='text'
                   name='CurrentDesignation'
+                  required
                   id='current-designation'
                   className='form-control'
                   placeholder='Current Designation'
                   value={designation}
                   onChange={(e) => SetDesignation(e.target.value)}
                 />
+              </div>
+              <div className='form-group mb-4'>
+                <label htmlFor='grad_college'>Graduation (mandatory)</label>
+                <div className='row'>
+                  <div className='col-lg-4'>
+                    <input
+                      type='text'
+                      name='GradCollege'
+                      required
+                      id='grad_college'
+                      className='form-control'
+                      placeholder='University/College'
+                      value={grad_college}
+                      onChange={(e) => SetGradCollege(e.target.value)}
+                    />
+                  </div>
+                  <div className='col-lg-4'>
+                    <input
+                      type='text'
+                      name='GradDegree'
+                      required
+                      id='grad_degree'
+                      className='form-control'
+                      placeholder='Degree'
+                      value={grad_degree}
+                      onChange={(e) => SetGradDegree(e.target.value)}
+                    />
+                  </div>
+                  <div className='col-lg-4'>
+                    <input
+                      type='text'
+                      name='GradYear'
+                      required
+                      id='grad_year'
+                      className='form-control'
+                      placeholder='Passout Year'
+                      value={grad_year}
+                      onChange={(e) => SetGradYear(e.target.value)}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className='form-group mb-4'>
+                <label htmlFor='post_grad_college'>Post Graduation</label>
+                <div className='row'>
+                  <div className='col-lg-4'>
+                    <input
+                      type='text'
+                      name='GradCollege'
+                      id='post_grad_college'
+                      className='form-control'
+                      placeholder='University/College'
+                      value={post_grad_college}
+                      onChange={(e) => SetPostGradCollege(e.target.value)}
+                    />
+                  </div>
+                  <div className='col-lg-4'>
+                    <input
+                      type='text'
+                      name='GradDegree'
+                      id='post_grad_degree'
+                      className='form-control'
+                      placeholder='Degree'
+                      value={post_grad_degree}
+                      onChange={(e) => SetPostGradDegree(e.target.value)}
+                    />
+                  </div>
+                  <div className='col-lg-4'>
+                    <input
+                      type='text'
+                      name='GradYear'
+                      id='post_grad_year'
+                      className='form-control'
+                      placeholder='Passout Year'
+                      value={post_grad_year}
+                      onChange={(e) => SetPostGradYear(e.target.value)}
+                    />
+                  </div>
+                </div>
               </div>
               <div className='form-group mb-4'>
                 <label htmlFor='about'>
@@ -1708,6 +1799,7 @@ const BeAMentor = () => {
                   name='About'
                   id='about'
                   className='form-control'
+                  required
                   placeholder='Write something about yourself'
                   rows='5'
                   value={about}
@@ -1720,6 +1812,7 @@ const BeAMentor = () => {
                 </label>
                 <select
                   name='industry'
+                  required
                   className='form-select'
                   value={getToKnow}
                   onChange={(e) => SetGetToKnow(e.target.value)}

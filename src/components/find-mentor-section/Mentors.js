@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   listStudentMentor,
   listProfessionalMentor,
-  listEnterpreneurMentor,
+  listEntrepreneurMentor,
   listMentor,
   searchMentor,
 } from '../../redux/actions/mentorActions';
@@ -36,8 +36,8 @@ const Mentors = () => {
     if (sort === 'professional') {
       dispatch(listProfessionalMentor());
     }
-    if (sort === 'enterpreneur') {
-      dispatch(listEnterpreneurMentor());
+    if (sort === 'entrepreneur') {
+      dispatch(listEntrepreneurMentor());
     }
   }, [dispatch, sort, search]);
 
@@ -83,8 +83,8 @@ const Mentors = () => {
                 </button>
               </li>
               <li>
-                <button className='btn' onClick={handleCLick('enterpreneur')}>
-                  Enterpreneur
+                <button className='btn' onClick={handleCLick('entrepreneur')}>
+                  Entrepreneur
                 </button>
               </li>
             </ul>

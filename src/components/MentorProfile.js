@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'react-phone-input-2/lib/style.css';
-import Axios from 'axios';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { listMentorDetails } from '../redux/actions/mentorActions';
 
 import SignUpModal from './join-mentokart/SignUpModal';
 import Modal from 'react-modal';
@@ -9,63 +9,31 @@ import Modal from 'react-modal';
 import Footer from './footer/Footer';
 import MyNavbar from './header-section/MyNavbar';
 
-const MentorProfile = (props) => {
+const MentorProfile = ({ match }) => {
   const [showModal, setShowModal] = useState(false);
 
   const showModalBtn = (bool) => {
     setShowModal(bool);
   };
 
-  const [profile, setProfile] = useState({});
-  const [firstName, setFirstName] = useState('');
-  const [middleName, setMiddleName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [mentorAbout, setMentorAbout] = useState('');
-  const [mentorExperience, setMentorExperience] = useState([]);
-  const [mentorAchievement, setMentorAchievement] = useState([]);
-  const [mentorTestimonial, setMentorTestimonial] = useState([]);
-  const [mentorType, setMentorType] = useState('');
-  const [categories, setCategories] = useState([]);
-  const [imageURL, setImageURL] = useState('/images/user.png');
+  const dispatch = useDispatch();
+  const mentorDetails = useSelector((state) => state.mentorDetailsList);
+  const { mentorDetail } = mentorDetails;
+  const {
+    user,
+    userDetail,
+    user_achievement,
+    user_experience,
+    user_testimonial,
+    menteerating,
+  } = mentorDetail;
+
+  console.log(mentorDetail);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    Axios.get(
-      'https://mentorkart.org/api/sso-mentor/' + props.match.params.id
-    ).then((res, err) => {
-      // console.log(res.data.data);
-      setProfile(res.data.data);
-      if (res.data.data.user.first_name) {
-        setFirstName(res.data.data.user.first_name);
-      }
-      if (res.data.data.user.middle_name) {
-        setMiddleName(res.data.data.user.second_name);
-      }
-      if (res.data.data.user.second_name) {
-        setLastName(res.data.data.user.last_name);
-      }
-      if (res.data.data.mentor.mentor_type) {
-        setMentorType(res.data.data.mentor.mentor_type);
-      }
-      if (res.data.data.user.user_categories) {
-        setCategories(
-          res.data.data.user.user_categories.split(',').join(' | ')
-        );
-      }
-      if (res.data.data.user.about) {
-        setMentorAbout(res.data.data.user.about);
-      }
-      if (res.data.data.user_experience) {
-        setMentorExperience(res.data.data.user_experience);
-      }
-      if (res.data.data.user_achievement) {
-        setMentorAchievement(res.data.data.user_achievement);
-      }
-      if (res.data.data.user_testimonial) {
-        setMentorTestimonial(res.data.data.user_testimonial);
-      }
-    });
-  }, [props.match.params.id]);
+    dispatch(listMentorDetails(match.params.id));
+    window.scroll(0, 0);
+  }, [dispatch, match]);
 
   return (
     <div className='mentor-profile'>
@@ -90,15 +58,29 @@ const MentorProfile = (props) => {
                         height: '100%',
                         width: '100%',
                       }}
-                      src={imageURL}
+                      src={user?.profile_image}
                       className='img-fluid'
                       alt=''
                     />
                   </div>
                   <h2 className='text-capitalize mt-3'>
-                    {firstName + ' ' + middleName + ' ' + lastName}
+                    {user?.first_name +
+                      ' ' +
+                      user?.middle_name +
+                      ' ' +
+                      user?.last_name}
                   </h2>
-                  <p>{categories}</p>
+                  <h6>
+                    Designation:{' '}
+                    <span className='text-capitalize'>{user?.designation}</span>
+                  </h6>
+                  <h6>
+                    Industry:{' '}
+                    <span className='text-capitalize'>
+                      {userDetail?.industry}
+                    </span>
+                  </h6>
+                  <small>{user?.user_categories.split(',').join(' | ')}</small>
                 </div>
                 <div className='book-sec mb-4 px-md-0 px-3'>
                   <div className='row'>
@@ -217,7 +199,7 @@ const MentorProfile = (props) => {
                       data-bs-parent='#accordionFlushExample'
                     >
                       <div className='accordion-body'>
-                        <p>{mentorAbout}</p>
+                        <p>{user?.about}</p>
                       </div>
                     </div>
                   </div>
@@ -243,17 +225,18 @@ const MentorProfile = (props) => {
                       <div className='accordion-body'>
                         <div className='experience'>
                           <ul>
-                            {mentorExperience.map((experience, index) => {
-                              return (
-                                <li key={index}>
-                                  <h6>
-                                    {experience.title} at{' '}
-                                    {experience.organisation}{' '}
-                                  </h6>
-                                  <p>{experience.description}</p>
-                                </li>
-                              );
-                            })}
+                            {user_experience &&
+                              user_experience.map((experience, index) => {
+                                return (
+                                  <li key={index}>
+                                    <h6>
+                                      {experience.title} at{' '}
+                                      {experience.organisation}{' '}
+                                    </h6>
+                                    <p>{experience.description}</p>
+                                  </li>
+                                );
+                              })}
                           </ul>
                         </div>
                       </div>
@@ -280,16 +263,17 @@ const MentorProfile = (props) => {
                     >
                       <div className='accordion-body'>
                         <ul>
-                          {mentorAchievement.map((achievement, index) => {
-                            return (
-                              <li key={index}>
-                                <h6>
-                                  {achievement.name} on {achievement.year}{' '}
-                                </h6>
-                                <p>{achievement.description}</p>
-                              </li>
-                            );
-                          })}
+                          {user_achievement &&
+                            user_achievement.map((achievement, index) => {
+                              return (
+                                <li key={index}>
+                                  <h6>
+                                    {achievement.name} on {achievement.year}{' '}
+                                  </h6>
+                                  <p>{achievement.description}</p>
+                                </li>
+                              );
+                            })}
                         </ul>
                       </div>
                     </div>
@@ -315,20 +299,21 @@ const MentorProfile = (props) => {
                     >
                       <div className='accordion-body'>
                         <ul>
-                          {mentorTestimonial.map((testimonial, index) => {
-                            return (
-                              <li key={index}>
-                                <p>
-                                  {testimonial.description}
+                          {user_testimonial &&
+                            user_testimonial.map((testimonial, index) => {
+                              return (
+                                <li key={index}>
+                                  <p className='mb-0'>
+                                    {testimonial.description}
+                                  </p>
                                   <address>
                                     {' '}
                                     ~ {testimonial.given_by} on{' '}
                                     {testimonial.year}{' '}
                                   </address>
-                                </p>
-                              </li>
-                            );
-                          })}
+                                </li>
+                              );
+                            })}
                         </ul>
                       </div>
                     </div>

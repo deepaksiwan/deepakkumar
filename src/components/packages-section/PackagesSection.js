@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import ProgramCard from './ProgramCard';
+import PackagesCard from './PackagesCard';
 import { useDispatch, useSelector } from 'react-redux';
-import { listProgram } from '../../redux/actions/programActions';
+import { listPackages } from '../../redux/actions/packagesActions';
 
 // import Swiper core and required modules
 import SwiperCore, { Pagination, A11y, Autoplay } from 'swiper';
@@ -16,13 +16,14 @@ import 'swiper/components/pagination/pagination.scss';
 // install Swiper modules
 SwiperCore.use([Pagination, A11y, Autoplay]);
 
-const ProgramsSection = () => {
+const PackagesSection = () => {
   const dispatch = useDispatch();
-  const programList = useSelector((state) => state.programList);
-  const { program, loading } = programList;
+  const packagesList = useSelector((state) => state.packagesList);
+  // console.log(packagesList);
+  const { packages, loading } = packagesList;
 
   useEffect(() => {
-    dispatch(listProgram());
+    dispatch(listPackages());
   }, [dispatch]);
 
   // console.log(program);
@@ -40,9 +41,9 @@ const ProgramsSection = () => {
           <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
             <div className='row align-items-center'>
               <div className='col-lg-4 col-md-5 left'>
-                <h1>Programs & Courses</h1>
+                <h1>1:1 Mentorship Packages</h1>
                 <p>Learn from the best</p>
-                <Link to='/courses' className='btn btn-outline-primary'>
+                <Link to='/packages' className='btn btn-outline-primary'>
                   Explore More
                 </Link>
               </div>
@@ -67,10 +68,10 @@ const ProgramsSection = () => {
                       },
                     }}
                   >
-                    {program.map((pro, index) => {
+                    {packages.slice(0, 5).map((pro, index) => {
                       return (
                         <SwiperSlide key={index}>
-                          <ProgramCard data={pro} />
+                          <PackagesCard data={pro} />
                         </SwiperSlide>
                       );
                     })}
@@ -85,4 +86,4 @@ const ProgramsSection = () => {
   );
 };
 
-export default ProgramsSection;
+export default PackagesSection;
