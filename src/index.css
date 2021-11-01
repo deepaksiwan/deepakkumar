@@ -50,7 +50,6 @@ a {
   font-size: 20px !important;
   font-weight: 600;
 }
-
 .navbar-light .navbar-btn .nav-link {
   background-color: #3d3d3d;
   margin-right: 1rem;
@@ -61,6 +60,7 @@ a {
   font-weight: 400 !important;
   transform: scale(1) !important;
   transition: all 0.3s ease !important;
+  min-width: 100px;
 }
 .navbar-light .navbar-btn .nav-link:hover {
   transform: scale(1.03) !important;
@@ -221,6 +221,7 @@ a {
 .testimonials-section .right span,
 .organisation-left span,
 .youtube-section span,
+.brand-videos-section span,
 .subscription-section span {
   font-weight: 700;
   color: #6483f6;
@@ -231,14 +232,17 @@ a {
 .testimonials-section .right h1,
 .organisation-left h1,
 .youtube-section h1,
+.brand-videos-section h1,
 .subscription-section h1 {
   width: 50%;
   font-size: 56px;
   color: #333333;
 }
 .youtube-section h1,
+.brand-videos-section h1,
 .subscription-section h1 {
   width: 100%;
+  margin-top: -10px;
 }
 .organisation-left h1 {
   width: 100%;
@@ -1146,6 +1150,9 @@ a {
   margin: auto;
   padding: 0 20px 8px;
 }
+.courses .courses-content .cards .programs-card p {
+  font-size: 14.5px;
+}
 .be-a-mentor .container {
   max-width: 950px;
 }
@@ -1321,6 +1328,7 @@ a {
   font-weight: 500;
   text-align: center;
   line-height: 14px;
+  letter-spacing: -1px;
 }
 
 .find-mentor .mentor-card div h6 span,

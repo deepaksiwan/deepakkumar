@@ -12,11 +12,16 @@ import Modal from 'react-modal';
 import Parser from 'react-html-parser';
 
 import SignUpModal from '../join-mentokart/SignUpModal';
+import PackagesModal from './PackagesModal';
 
 const Packages = () => {
   const [showModal, setShowModal] = useState(false);
   const showModalBtn = (bool) => {
     setShowModal(bool);
+  };
+  const [showPackagesModal, setShowPackagesModal] = useState(false);
+  const showPackagesModalBtn = (bool) => {
+    setShowPackagesModal(bool);
   };
 
   const dispatch = useDispatch();
@@ -135,9 +140,17 @@ const Packages = () => {
                           </div>
                           <h6 className='mb-0'>₹ {course.price_INR} /-</h6>
                         </div>
-                        <div className='mt-2 mb-3'>
-                          {Parser(course.description)}
-                        </div>
+                        <p className='mt-2 mb-3'>
+                          {Parser(course.description.substring(0, 100))}
+                          <button
+                            onClick={() => {
+                              setShowPackagesModal(true);
+                            }}
+                            className='btn'
+                          >
+                            read more...
+                          </button>
+                        </p>
                         <div className='row'>
                           <button
                             onClick={() => {
@@ -176,6 +189,27 @@ const Packages = () => {
       >
         <SignUpModal showModalBtn={showModalBtn} />
       </Modal>
+
+      <Modal
+        id='packages-modal'
+        isOpen={showPackagesModal}
+        onRequestClose={() => setShowPackagesModal(false)}
+        style={{
+          overlay: {
+            zIndex: '5000',
+          },
+          content: {
+            maxWidth: '1100px',
+            margin: 'auto',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: '15px',
+          },
+        }}
+      >
+        <PackagesModal showPackagesModalBtn={showPackagesModalBtn} />
+      </Modal>
+
       <Footer />
     </div>
   );

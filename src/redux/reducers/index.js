@@ -13,6 +13,8 @@ import { packages } from './packagesReducer';
 import { mentorDetails } from './mentorReducer';
 import { blogsDetails } from './blogsReducer';
 import { login } from './loginReducer';
+import { websiteContent } from './websiteContentReducer';
+import { advertisements } from './advertisementsReducer';
 
 export default combineReducers({
   mentorList: mentor,
@@ -28,4 +30,6 @@ export default combineReducers({
   mentorDetailsList: mentorDetails,
   blogsDetailsList: blogsDetails,
   loginDetails: login,
+  websiteContentList: websiteContent,
+  advertisementsList: advertisements,
 });

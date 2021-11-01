@@ -104,24 +104,30 @@ const MyNavbar = () => {
             </li>
           </ul>
           <ul className='navbar-nav-2 navbar-nav mb-2'>
-            <li className='navbar-btn nav-item'>
-              <Link
-                onClick={() => showModalBtn(true)}
-                className='nav-link btn'
-                to='#'
-              >
-                Login/Signup
-              </Link>
-            </li>
-            <li className='navbar-btn nav-item'>
-              <Link
-                onClick={() => showModalBtn(true)}
-                className='nav-link btn'
-                to='#'
-              >
-                Free Trial
-              </Link>
-            </li>
+            <div className='row'>
+              <div className='col-6'>
+                <li className='navbar-btn nav-item'>
+                  <Link
+                    onClick={() => showModalBtn(true)}
+                    className='nav-link btn'
+                    to='#'
+                  >
+                    Login
+                  </Link>
+                </li>
+              </div>
+              <div className='col-6'>
+                <li className='navbar-btn nav-item'>
+                  <Link
+                    onClick={() => showModalBtn(true)}
+                    className='nav-link btn'
+                    to='#'
+                  >
+                    Free Trial
+                  </Link>
+                </li>
+              </div>
+            </div>
           </ul>
         </div>
       </div>

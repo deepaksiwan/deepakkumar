@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import MentorCard from './MentorCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { listMentor } from '../../redux/actions/mentorActions';
+import { listWebsiteContent } from '../../redux/actions/websiteContentActions';
 
 // import Swiper core and required modules
 import SwiperCore, { Pagination, A11y, Autoplay } from 'swiper';
@@ -18,12 +19,16 @@ SwiperCore.use([Pagination, A11y, Autoplay]);
 
 const FindMentorSection = () => {
   const mentorList = useSelector((state) => state.mentorList);
+  const websiteContentList = useSelector((state) => state.websiteContentList);
+
   const { mentor, loading } = mentorList;
+  const { websiteContent } = websiteContentList;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(listMentor());
+    dispatch(listWebsiteContent());
   }, [dispatch]);
 
   return (
@@ -35,13 +40,12 @@ const FindMentorSection = () => {
           <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
             <div className='row'>
               <div className='col-md-4 left mb-md-0 mb-lg-5 mb-3 '>
-                <span className='ms-1'>MENTORS</span>
-                <h1>Find a Mentor</h1>
-                <p className=''>Get Mentored from best</p>
-                <p className='sec'>
-                  Life Coaches | Business Coaches | Industry Mentors | Career
-                  Coaches | Startup Mentors | Buddy Mentors
-                </p>
+                <span className='ms-1'>
+                  {websiteContent[0]?.data[7]?.field_data}
+                </span>
+                <h1>{websiteContent[0]?.data[8]?.field_data}</h1>
+                <p className=''>{websiteContent[0]?.data[9]?.field_data}</p>
+                <p className='sec'>{websiteContent[0]?.data[10]?.field_data}</p>
 
                 <Link to='/all-mentors' className='btn px-5 btn-ani'>
                   Explore

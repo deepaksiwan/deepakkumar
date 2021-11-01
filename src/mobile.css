@@ -135,7 +135,8 @@
   .blogs-section h1,
   .testimonials-section .right h1,
   .subscription-section h1,
-  .youtube-section h1 {
+  .youtube-section h1,
+  .brand-videos-section h1 {
     font-size: 45px;
   }
   .subscription-section h1 {
@@ -458,5 +459,9 @@
   .programs .programs-cards .img {
     height: 190px;
     width: 210px;
+  }
+
+  .navbar .heading.dropdown-toggle.btn {
+    padding: 0.375rem 0rem !important;
   }
 }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import ProgramCard from './ProgramCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProgram } from '../../redux/actions/programActions';
+import { listWebsiteContent } from '../../redux/actions/websiteContentActions';
 
 // import Swiper core and required modules
 import SwiperCore, { Pagination, A11y, Autoplay } from 'swiper';
@@ -19,10 +20,14 @@ SwiperCore.use([Pagination, A11y, Autoplay]);
 const ProgramsSection = () => {
   const dispatch = useDispatch();
   const programList = useSelector((state) => state.programList);
+  const websiteContentList = useSelector((state) => state.websiteContentList);
+
   const { program, loading } = programList;
+  const { websiteContent } = websiteContentList;
 
   useEffect(() => {
     dispatch(listProgram());
+    dispatch(listWebsiteContent());
   }, [dispatch]);
 
   // console.log(program);
@@ -40,8 +45,8 @@ const ProgramsSection = () => {
           <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
             <div className='row align-items-center'>
               <div className='col-lg-4 col-md-5 left'>
-                <h1>Programs & Courses</h1>
-                <p>Learn from the best</p>
+                <h1>{websiteContent[0]?.data[5]?.field_data}</h1>
+                <p>{websiteContent[0]?.data[6]?.field_data}</p>
                 <Link to='/courses' className='btn btn-outline-primary'>
                   Explore More
                 </Link>

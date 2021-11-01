@@ -6,8 +6,11 @@ import { useDispatch } from 'react-redux';
 
 import Footer from './footer/Footer';
 import MyNavbar from './header-section/MyNavbar';
+import SelectSearch from 'react-select-search';
+import { industryOptions } from './data/industryOptions';
 
 const BeAMentor = () => {
+  console.log(industryOptions);
   const dispatch = useDispatch();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -515,6 +518,13 @@ const BeAMentor = () => {
                   <option value='Waste management'>Waste management</option>
                   <option value='Others'>Others</option>
                 </select>
+                {/* <SelectSearch
+                  options={industryOptions}
+                  search
+                  // filterOptions={fuzzySearch}
+                  emptyMessage='Not found'
+                  placeholder='Select your country'
+                /> */}
               </div>
               {industry === 'Others' && (
                 <div className='form-group mb-4'>

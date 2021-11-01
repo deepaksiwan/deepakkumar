@@ -31,6 +31,7 @@ import Packages from './components/packages-section/Packages';
 import PackagesSection from './components/packages-section/PackagesSection';
 import DetailsSection from './components/details-section/DetailsSection';
 import CampusSection from './components/campus/CampusSection';
+import BrandVideosSection from './components/brand-videos-section/BrandVideosSection';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           <JoinMentorkart />
           <ProgramsSection />
           <SubscriptionSection />
+          <BrandVideosSection />
           <PartnersSection />
           <Testimonials />
           <FeaturedSection />
