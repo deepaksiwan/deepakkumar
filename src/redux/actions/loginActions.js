@@ -1,5 +1,6 @@
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
+
 import {
   LOGIN_GET_REQUEST,
   LOGIN_GET_SUCCESS,
@@ -38,17 +39,17 @@ export const signIn =
       });
 
       if (data) {
-        jwt.sign(
-          { email: email, password: password },
-          'website-secret',
-          (err, token) => {
-            if (err) {
-              console.log(err);
-            }
-            console.log(token);
-            localStorage.setItem('userInfo', JSON.stringify(token));
-          }
-        );
+        const payload = {
+          email: email,
+          password: password,
+          app_key: 'mkwebsite',
+        };
+
+        const secretKey = Buffer.from('website-secret', 'base64');
+
+        const token = jwt.sign(payload, secretKey, { expiresIn: '2d' });
+
+        localStorage.setItem('userInfo', JSON.stringify(token));
       }
     } catch (error) {
       dispatch({
@@ -168,19 +169,18 @@ export const otpsection =
         type: OTP_GET_SUCCESS,
         payload: data,
       });
-
       if (data) {
-        jwt.sign(
-          { email: email, password: password },
-          'website-secret',
-          (err, token) => {
-            if (err) {
-              console.log(err);
-            }
-            console.log(token);
-            localStorage.setItem('userInfo', JSON.stringify(token));
-          }
-        );
+        const payload = {
+          email: email,
+          password: password,
+          app_key: 'mkwebsite',
+        };
+
+        const secretKey = Buffer.from('website-secret', 'base64');
+
+        const token = jwt.sign(payload, secretKey, { expiresIn: '2d' });
+
+        localStorage.setItem('userInfo', JSON.stringify(token));
       }
     } catch (error) {
       dispatch({
