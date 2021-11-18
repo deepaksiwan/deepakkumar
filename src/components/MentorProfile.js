@@ -29,7 +29,7 @@ const MentorProfile = (props) => {
     menteerating,
   } = mentorDetail;
 
-  console.log(mentorDetail);
+  // console.log(mentorDetail);
 
   useEffect(() => {
     window.scroll(0, 0);

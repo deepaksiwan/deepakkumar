@@ -81,12 +81,8 @@ function App() {
         <Route path='/as-a-organisation'>
           <AsAOrganisation />
         </Route>
-        <Route path='/about'>
-          <About />
-        </Route>
-        <Route path='/our-team'>
-          <OurTeam />
-        </Route>
+        <Route path='/about'>{/* <About /> */}</Route>
+        <Route path='/our-team'>{/* <OurTeam /> */}</Route>
         <Route path='/faq'>
           <Faq />
         </Route>
@@ -99,9 +95,7 @@ function App() {
         <Route path='/terms-conditions'>
           <TermsCondi />
         </Route>
-        <Route path='/find-a-mentor'>
-          <FindAMentor />
-        </Route>
+        <Route path='/find-a-mentor'>{/* <FindAMentor /> */}</Route>
         <Route
           path='/mentor-profile/:username/:id'
           component={MentorProfile}
