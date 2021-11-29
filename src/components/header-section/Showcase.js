@@ -83,7 +83,7 @@ const Showcase = () => {
             </h1>
             <div className='row showcase-cards'>
               <div className='col-xl-5 col-6'>
-                <div onClick={handleClick} className='showcase-card one'>
+                <Link to='/all-mentors' className='showcase-card one'>
                   <div className='showcase-card-top d-flex align-items-center py-md-2 px-md-3 py-1 px-2'>
                     <div>
                       <img src='/images/showcase-card-one.png' alt='' />
@@ -96,7 +96,7 @@ const Showcase = () => {
                   <div className='showcase-card-bottom text-center'>
                     Find a mentor
                   </div>
-                </div>
+                </Link>
               </div>
               <div className='col-xl-5 col-6'>
                 <div onClick={handleClick} className='showcase-card two'>

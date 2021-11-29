@@ -115,7 +115,7 @@ const MentorProfile = (props) => {
                     </div>
                   </div>
                 </div>
-                <div className='rating-sec px-3 mb-md-0 mb-4'>
+                {/* <div className='rating-sec px-3 mb-md-0 mb-4'>
                   <div className='d-flex align-items-center'>
                     <div className=''>
                       <h3 className='display-4 mb-0'>4.5</h3>
@@ -131,7 +131,7 @@ const MentorProfile = (props) => {
                       <span>(200 reviews)</span>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div className='row showcase-cards mt-md-4 px-md-0 px-3'>
                   <div className='col-lg-6 col-md-12 col-6 ps-0'>
                     <div
@@ -251,7 +251,7 @@ const MentorProfile = (props) => {
                       </div>
                     </div>
                   </div>
-                  <div className='accordion-item'>
+                  {/* <div className='accordion-item'>
                     <h2 className='accordion-header' id='flush-headingThree'>
                       <button
                         className='accordion-button collapsed'
@@ -326,7 +326,7 @@ const MentorProfile = (props) => {
                         </ul>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

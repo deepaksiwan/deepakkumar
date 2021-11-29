@@ -48,7 +48,7 @@ const ProgramCard = ({ data }) => {
                     borderRadius: '10px',
                     objectFit: 'cover',
                     width: '100%',
-                    height: '165px'
+                    height: '165px',
                   }}
                   alt=''
                 />
@@ -67,9 +67,9 @@ const ProgramCard = ({ data }) => {
             </div>
             <h2>{data.mk_course_name}</h2>
             <h1>₹ {data.price} </h1>
-            <p className='mb-md-3 mb-2 packages-description-homepage'>
+            <div className='mb-md-3 mb-2 packages-description-homepage'>
               {data.description}
-            </p>
+            </div>
             <button
               onClick={() => {
                 if (loggedIn === null) {

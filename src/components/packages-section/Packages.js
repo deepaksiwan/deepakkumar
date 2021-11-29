@@ -61,7 +61,7 @@ const Packages = () => {
       <MyNavbar />
       <div className='courses-head'>
         <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-4 py-3'>
-          <h1>Packages</h1>
+          <h1>1:1 Mentorship Programs</h1>
           <form action='' className='courses-search'>
             <div className='form-group'>
               <span>

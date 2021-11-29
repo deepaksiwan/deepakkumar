@@ -47,7 +47,10 @@ const PackagesSection = () => {
               <div className='col-lg-4 col-md-5 left'>
                 <h1>{websiteContent[0]?.data[2]?.field_data}</h1>
                 <p>{websiteContent[0]?.data[3]?.field_data}</p>
-                <Link to='/packages' className='btn btn-outline-primary'>
+                <Link
+                  to='/mentorship-programs'
+                  className='btn btn-outline-primary'
+                >
                   Explore More
                 </Link>
               </div>

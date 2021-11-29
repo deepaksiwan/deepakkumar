@@ -94,9 +94,9 @@ const Mentors = () => {
         <div className='mentors-cards'>
           <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 py-md-5 pb-5'>
             <div className='row'>
-              {mentor.map((mentor, index) => {
+              {mentor?.map((mentor, index) => {
                 return (
-                  <div key={index} className='col-lg-4 col-md-6 col-12'>
+                  <div key={index} className='col-lg-4 col-sm-6 col-12'>
                     <div className='mentors-card mb-4'>
                       <SingleMentorCard
                         id={mentor.id}
