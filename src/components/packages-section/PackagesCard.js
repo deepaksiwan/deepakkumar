@@ -49,7 +49,7 @@ const PackagesCard = ({ data }) => {
                     borderRadius: '10px',
                     objectFit: 'cover',
                     width: '100%',
-                    height: '170px'
+                    height: '170px',
                   }}
                   alt=''
                 />
@@ -68,9 +68,9 @@ const PackagesCard = ({ data }) => {
             </div>
             <h2>{data.package_name}</h2>
             <h1>₹ {data.price_INR}</h1>
-            <p className='mb-md-3 mb-2 packages-description-homepage'>
+            <div className='mb-md-3 mb-2 packages-description-homepage'>
               {Parser(data.description.substring(0, 100))}
-            </p>
+            </div>
             <button
               onClick={() => {
                 if (loggedIn === null) {

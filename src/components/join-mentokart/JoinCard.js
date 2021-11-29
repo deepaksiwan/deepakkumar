@@ -26,7 +26,7 @@ const JoinCard = (props) => {
             </button>
           ) : (
             <Link to={props.as} className='signup-btn btn-ani btn py-1 px-3'>
-              SignUp Now
+              Request a callback
             </Link>
           )}
         </div>

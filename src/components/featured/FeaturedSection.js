@@ -30,10 +30,10 @@ const FeaturedSection = () => {
   }, [dispatch]);
 
   return (
-    <div className='partners my-md-5 my-0 mb-5 pt-4'>
+    <div className='partners my-md-5 my-0 mb-5'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
         <h1>{websiteContent[0]?.data[21]?.field_data}</h1>
-        <div className='partners-images pt-3'>
+        <div className='partners-images'>
           <Swiper
             spaceBetween={0}
             slidesPerView={1}

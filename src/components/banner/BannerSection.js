@@ -16,42 +16,49 @@ import 'swiper/components/pagination/pagination.scss';
 SwiperCore.use([A11y, Autoplay]);
 
 const BannerSection = () => {
+  const user = JSON.parse(localStorage.getItem('userInfo'));
+
   const dispatch = useDispatch();
   const bannerList = useSelector((state) => state.bannerList);
   const { banner, loading } = bannerList;
 
+  console.log(user);
   useEffect(() => {
     dispatch(listBanner());
   }, [dispatch]);
 
   return (
     <>
-      {loading ? (
-        <div></div>
-      ) : (
-        banner[0]?.data.length !== 0 && (
-          <div className='banners-section mt-md-0 mt-4'>
-            <Swiper
-              spaceBetween={0}
-              slidesPerView={1}
-              autoplay={{ autoplay: true, delay: 10000 }}
-              breakpoints={{
-                // when window width is >= 0px
-                0: {
-                  slidesPerView: 1,
-                },
-              }}
-            >
-              {banner[0]?.data?.map((banner, index) => {
-                return (
-                  <SwiperSlide key={index}>
-                    <Banners banner={banner} myclass='overlay' />
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-          </div>
+      {user === null ? (
+        loading ? (
+          <div></div>
+        ) : (
+          banner[0]?.data.length !== 0 && (
+            <div className='banners-section mt-md-0 mt-4 mb-md-5 mb-4'>
+              <Swiper
+                spaceBetween={0}
+                slidesPerView={1}
+                autoplay={{ autoplay: true, delay: 10000 }}
+                breakpoints={{
+                  // when window width is >= 0px
+                  0: {
+                    slidesPerView: 1,
+                  },
+                }}
+              >
+                {banner[0]?.data?.map((banner, index) => {
+                  return (
+                    <SwiperSlide key={index}>
+                      <Banners banner={banner} myclass='overlay' />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+            </div>
+          )
         )
+      ) : (
+        ''
       )}
     </>
   );

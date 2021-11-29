@@ -36,7 +36,7 @@ const MyNavbar = () => {
           <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
             <li className='nav-item me-3'>
               <Link className='nav-link' to='/all-mentors'>
-                Find a Mentor
+                All Mentors
               </Link>
             </li>
             <li className='nav-item me-3'>
@@ -45,13 +45,13 @@ const MyNavbar = () => {
               </Link>
             </li>
             <li className='nav-item me-3'>
-              <Link className='nav-link' to='/courses'>
+              <Link className='nav-link' to='/programs-courses'>
                 Programs & Courses
               </Link>
             </li>
             <li className='nav-item'>
-              <Link className='nav-link' to='/packages'>
-                Mentorship Packages
+              <Link className='nav-link' to='/mentorship-programs'>
+                1:1 Mentorship Programs
               </Link>
             </li>
           </ul>

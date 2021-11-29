@@ -47,7 +47,10 @@ const ProgramsSection = () => {
               <div className='col-lg-4 col-md-5 left'>
                 <h1>{websiteContent[0]?.data[4]?.field_data}</h1>
                 <p>{websiteContent[0]?.data[5]?.field_data}</p>
-                <Link to='/courses' className='btn btn-outline-primary'>
+                <Link
+                  to='/programs-courses'
+                  className='btn btn-outline-primary'
+                >
                   Explore More
                 </Link>
               </div>
@@ -63,8 +66,14 @@ const ProgramsSection = () => {
                       0: {
                         slidesPerView: 1,
                       },
+                      480: {
+                        slidesPerView: 1.5,
+                      },
+                      580: {
+                        slidesPerView: 2,
+                      },
                       // when window width is >= 1000px
-                      440: {
+                      780: {
                         slidesPerView: 1.5,
                       },
                       1000: {

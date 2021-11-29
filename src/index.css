@@ -336,8 +336,8 @@ a {
 }
 .find-mentor .mentor-card div span,
 .mentors-card .mentor-card div span,
-.courses .program-card p {
-  font-size: 14.5px;
+.courses .program-card div {
+  font-size: 13.5px;
   color: #3d3d3d;
 }
 .mentors-card .mentor-card div span {
@@ -624,7 +624,7 @@ a {
   font-size: 18px;
   font-weight: 700;
 }
-.programs .program-card p {
+.programs .program-card div.packages-description-homepage {
   font-size: 11px;
   font-weight: 500;
 }
@@ -914,6 +914,20 @@ a {
 
 .footer-div-3 p.sec {
   color: rgba(255, 255, 255, 0.5);
+}
+
+.footer .dropdown-toggle.btn {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  padding-left: 0;
+  color: #fff;
+  font-size: 17px;
+  background-image: url('');
+}
+.footer .dropdown-item a {
+  color: #000;
+  font-size: 14.5px;
 }
 .signup-modal {
   height: 100%;
@@ -1582,7 +1596,6 @@ a {
 
 .react-tel-input .form-control {
   min-height: calc(1.5em + 0.5rem + 2px);
-  padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   border-radius: 0.2rem;
 }
@@ -1839,6 +1852,12 @@ input[type='number']:focus,
   position: absolute;
   right: 10px;
   bottom: -5px;
+}
+.password-div abbr {
+  position: absolute;
+  right: 7.5px;
+  bottom: 4px;
+  color: #888;
 }
 
 .subscription-section .hide {

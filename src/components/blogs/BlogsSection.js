@@ -46,7 +46,7 @@ const BlogsSection = () => {
         </div>
         <div className='mt-4'>
           <Link to='/our-blogs' className='btn btn-dark'>
-            Our Blogs
+            View more blogs
           </Link>
         </div>
       </div>

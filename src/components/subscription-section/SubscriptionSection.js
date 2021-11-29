@@ -22,6 +22,8 @@ import 'swiper/components/pagination/pagination.scss';
 SwiperCore.use([Pagination, A11y, Autoplay]);
 
 const SubscriptionSection = () => {
+  const user = localStorage.getItem('userInfo');
+
   const [showModal, setShowModal] = useState(false);
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
@@ -51,8 +53,17 @@ const SubscriptionSection = () => {
   const showModalBtn = (bool) => {
     setShowModal(bool);
   };
+  const handleClick = () => {
+    if (user) {
+      // setShowModal(false);
+      window.location = `http://mentorkart.org/mentorkart?SSO_Mtoken=${user}&domain=https://mentorkart-new-ui.netlify.app`;
+      // alert('Logged in');
+    } else {
+      setShowModal(true);
+    }
+  };
   return (
-    <div className='subscription-section my-md-5 my-3 mt-5'>
+    <div className='subscription-section mt-md-5 mt-3'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
         <div className='row text-center'>
           <span>{websiteContent[0]?.data[18]?.field_data}</span>
@@ -60,7 +71,7 @@ const SubscriptionSection = () => {
         </div>
         <div className='mt-3 align-items-center '>
           <Swiper
-            spaceBetween={0}
+            spaceBetween={30}
             slidesPerView={1}
             pagination={{ clickable: true }}
             autoplay={{ autoplay: true, delay: 20000 }}
@@ -99,7 +110,7 @@ const SubscriptionSection = () => {
                   </div>
                   <div className='toggle-option-button'>
                     <label
-                      class={
+                      className={
                         active1 === 'quaterly'
                           ? 'toggler toggler-is-active'
                           : 'toggler'
@@ -107,11 +118,11 @@ const SubscriptionSection = () => {
                     >
                       Quaterly
                     </label>
-                    <div class='toggle'>
+                    <div className='toggle'>
                       <input
                         type='checkbox'
                         id='switcher'
-                        class='check'
+                        className='check'
                         checked={isChecked1}
                         onChange={() => {
                           setIsChecked1(!isChecked1);
@@ -122,10 +133,10 @@ const SubscriptionSection = () => {
                           }
                         }}
                       />
-                      <b class='b switch'></b>
+                      <b className='b switch'></b>
                     </div>
                     <label
-                      class={
+                      className={
                         active1 === 'yearly'
                           ? 'toggler toggler-is-active'
                           : 'toggler'
@@ -151,7 +162,7 @@ const SubscriptionSection = () => {
                     <hr />
                     <div className='row '>
                       <button
-                        onClick={() => showModalBtn(true)}
+                        onClick={handleClick}
                         className='btn btn-sm btn-ani'
                       >
                         Enroll Now
@@ -192,7 +203,7 @@ const SubscriptionSection = () => {
                   </div>
                   <div className='toggle-option-button'>
                     <label
-                      class={
+                      className={
                         active2 === 'quaterly'
                           ? 'toggler toggler-is-active'
                           : 'toggler'
@@ -200,11 +211,11 @@ const SubscriptionSection = () => {
                     >
                       Quaterly
                     </label>
-                    <div class='toggle'>
+                    <div className='toggle'>
                       <input
                         type='checkbox'
                         id='switcher'
-                        class='check'
+                        className='check'
                         checked={isChecked2}
                         onChange={() => {
                           setIsChecked2(!isChecked2);
@@ -215,10 +226,10 @@ const SubscriptionSection = () => {
                           }
                         }}
                       />
-                      <b class='b switch'></b>
+                      <b className='b switch'></b>
                     </div>
                     <label
-                      class={
+                      className={
                         active2 === 'yearly'
                           ? 'toggler toggler-is-active'
                           : 'toggler'
@@ -248,7 +259,7 @@ const SubscriptionSection = () => {
                     <hr />
                     <div className='row '>
                       <button
-                        onClick={() => showModalBtn(true)}
+                        onClick={handleClick}
                         className='btn btn-sm btn-ani'
                       >
                         Enroll Now
@@ -289,7 +300,7 @@ const SubscriptionSection = () => {
                   </div>
                   <div className='toggle-option-button'>
                     <label
-                      class={
+                      className={
                         active3 === 'quaterly'
                           ? 'toggler toggler-is-active'
                           : 'toggler'
@@ -297,11 +308,11 @@ const SubscriptionSection = () => {
                     >
                       Quaterly
                     </label>
-                    <div class='toggle'>
+                    <div className='toggle'>
                       <input
                         type='checkbox'
                         id='switcher'
-                        class='check'
+                        className='check'
                         checked={isChecked3}
                         onChange={() => {
                           setIsChecked3(!isChecked3);
@@ -312,10 +323,10 @@ const SubscriptionSection = () => {
                           }
                         }}
                       />
-                      <b class='b switch'></b>
+                      <b className='b switch'></b>
                     </div>
                     <label
-                      class={
+                      className={
                         active3 === 'yearly'
                           ? 'toggler toggler-is-active'
                           : 'toggler'
@@ -345,7 +356,7 @@ const SubscriptionSection = () => {
                     <hr />
                     <div className='row '>
                       <button
-                        onClick={() => showModalBtn(true)}
+                        onClick={handleClick}
                         className='btn btn-sm btn-ani'
                       >
                         Enroll Now

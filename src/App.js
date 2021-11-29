@@ -63,10 +63,10 @@ function App() {
         <Route path='/our-blogs'>
           <Blogs />
         </Route>
-        <Route path='/courses'>
+        <Route path='/programs-courses'>
           <Courses />
         </Route>
-        <Route path='/packages'>
+        <Route path='/mentorship-programs'>
           <Packages />
         </Route>
         <Route path='/be-a-mentor'>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { listFooter } from '../../redux/actions/footerActions';
+import { Dropdown } from 'react-bootstrap';
 
 const Footer = () => {
   const [newsletterText, SetNewsletterText] = useState('Submit');
@@ -143,6 +144,41 @@ const Footer = () => {
                         <Link className='footer-list-links' to='/faq'>
                           FAQ
                         </Link>
+                      </li>
+                      <li className='list-group-item'>
+                        <Dropdown>
+                          <Dropdown.Toggle
+                            className='footer-list-links'
+                            variant=''
+                            id='dropdown-basic'
+                          >
+                            More
+                          </Dropdown.Toggle>
+
+                          <Dropdown.Menu>
+                            <Dropdown.Item>
+                              <Link to='as-a-campus'>For campus</Link>
+                            </Dropdown.Item>
+                            <Dropdown.Item>
+                              <Link to='/as-a-organisation'>
+                                For Organisation
+                              </Link>
+                            </Dropdown.Item>
+                            <Dropdown.Item>
+                              <Link to='/our-blogs'>Blog</Link>
+                            </Dropdown.Item>
+                            <Dropdown.Item>
+                              <Link to='#' disabled>
+                                Study Abroad (coming soon)
+                              </Link>
+                            </Dropdown.Item>
+                            <Dropdown.Item>
+                              <Link to='#' disabled>
+                                Jobs (coming soon)
+                              </Link>
+                            </Dropdown.Item>
+                          </Dropdown.Menu>
+                        </Dropdown>
                       </li>
                     </ul>
                   </div>

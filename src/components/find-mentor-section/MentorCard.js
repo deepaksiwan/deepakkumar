@@ -50,7 +50,7 @@ const MentorCard = ({
           </div>
 
           <div className='category-tags mt-0 mb-3'>
-            {categories.split(',').map((cate, index) => {
+            {categories?.split(',').map((cate, index) => {
               return (
                 <span key={index} className='btn btn-sm me-2'>
                   {cate}
@@ -79,11 +79,7 @@ const MentorCard = ({
               to={`/mentor-profile/${url_name}/${id}`}
               className='ms-3 px-0'
             >
-              <MentorCardButtons
-                classes='mentor-card-btn active'
-                text='View Profile'
-                smtext=''
-              />
+              <button className='mentor-card-btn active'> View Profile </button>
             </Link>
           </div>
         </div>
