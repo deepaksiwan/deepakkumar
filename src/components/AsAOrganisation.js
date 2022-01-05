@@ -10,7 +10,7 @@ import MyNavbar from './header-section/MyNavbar';
 const AsAOrganisation = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo();
   });
   const [name, SetName] = useState('');
   const [email, SetEmail] = useState('');
@@ -148,6 +148,7 @@ const AsAOrganisation = () => {
                         type='email'
                         name='Email'
                         id='email'
+                        pattern='^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$'
                         required
                         value={email}
                         onChange={(e) => {

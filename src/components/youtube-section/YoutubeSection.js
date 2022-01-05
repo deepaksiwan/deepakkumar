@@ -26,6 +26,7 @@ const YoutubeSection = () => {
   const { websiteContent } = websiteContentList;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(listYoutube());
     dispatch(listWebsiteContent());
   }, [dispatch]);
@@ -41,15 +42,15 @@ const YoutubeSection = () => {
     <div className='youtube-section py-5 mb-lg-5'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
         <div className='row text-center'>
-          <span>{websiteContent[0]?.data[26]?.field_data}</span>
-          <h1>{websiteContent[0]?.data[27]?.field_data}</h1>
+          <span>{websiteContent[1]?.data[26]?.field_data}</span>
+          <h1>{websiteContent[1]?.data[27]?.field_data}</h1>
         </div>
         <div className='mt-3 align-items-center text-center'>
           <Swiper
             spaceBetween={50}
             slidesPerView={1}
             pagination={{ clickable: true }}
-            autoplay={{ autoplay: true, delay: 20000 }}
+            autoplay={{ autoplay: true, delay: 5000 }}
             breakpoints={{
               // when window width is >= 0px
               0: {
@@ -63,11 +64,11 @@ const YoutubeSection = () => {
           >
             {youtube[0] &&
               youtube[0].youtube &&
-              youtube[0].youtube.slice(0, 6).map((video, index) => {
+              youtube[0].youtube.slice(0, 7).map((video, index) => {
                 return (
                   <SwiperSlide key={index}>
                     <div className='youtube-video'>
-                      <YouTube videoId={getYouTubeID(video.url)} opts={opts} />
+                      <YouTube videoId={getYouTubeID(video.url)} />
                     </div>
                   </SwiperSlide>
                 );

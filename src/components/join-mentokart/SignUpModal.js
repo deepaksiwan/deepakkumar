@@ -103,6 +103,7 @@ const SignInModal = (props) => {
   };
   const SignUpSubmit = (e) => {
     e.preventDefault();
+    console.log('clicked');
     dispatch(
       signUp({
         category: user,
@@ -461,6 +462,7 @@ const SignInModal = (props) => {
                       <input
                         className='form-check-input mt-2'
                         type='checkbox'
+                        required
                         onChange={(e) => {
                           if (btnEnabled) {
                             setBtnEnabled(false);

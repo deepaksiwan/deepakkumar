@@ -101,6 +101,7 @@ const SignInModal = (props) => {
       })
     );
   };
+
   const SignUpSubmit = (e) => {
     e.preventDefault();
     dispatch(
@@ -480,7 +481,7 @@ const SignInModal = (props) => {
                   </div>
                   <div className='row px-2'>
                     <button type='submit' className='btn btn-dark'>
-                      Sign Up
+                      Get OTP
                     </button>
                   </div>
                 </fieldset>

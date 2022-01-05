@@ -28,8 +28,10 @@ const Showcase = () => {
   const { websiteContent, loading } = websiteContentList;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(listWebsiteContent());
-  }, [dispatch]);
+    console.log('websiteContentInShowcase', websiteContent);
+  }, []);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -71,7 +73,11 @@ const Showcase = () => {
         <div className='row'>
           <div className='col-md-6 left d-flex flex-column justify-content-center'>
             <p className='showcase-para mb-0 mt-md-0 mt-4'>
-              {ReactHtmlParser(websiteContent[0]?.data[1]?.field_data)}
+              {!loading &&
+                ReactHtmlParser(websiteContent[0]?.data[1]?.field_data)}
+              {/* {'websiteContent:',console.log(websiteContent)} */}
+              {/* {ReactHtmlParser(websiteContent[0]?.data[1]?.field_data)} */}
+              {loading && `Hey There, Welcome!!!`}
             </p>
             <h1 className='showcase-heading mt-md-3 mb-md-5 mt-3 mb-4'>
               {websiteContent[0]?.data[0]?.field_data}
@@ -116,6 +122,8 @@ const Showcase = () => {
               </div>
             </div>
           </div>
+
+          {/*CHECK: why 2 sliders????????????????????*/}
           <div className='col-md-6 right d-md-block d-none'>
             <div className='right-img container'>
               <Swiper
@@ -235,7 +243,7 @@ const Showcase = () => {
         </div>
       </div>
 
-      <div className='showcase-links d-xxl-block d-none'>
+      {/* <div className='showcase-links d-xxl-block d-none'>
         <ul className='navbar-nav d-flex flex-column justify-content-center align-items-center'>
           <li className='nav-item'>
             <a
@@ -288,7 +296,7 @@ const Showcase = () => {
             </a>
           </li>
         </ul>
-      </div>
+                </div>*/}
     </div>
   );
 };

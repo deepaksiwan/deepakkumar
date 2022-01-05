@@ -2,18 +2,43 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { listFooter } from '../../redux/actions/footerActions';
-import { Dropdown } from 'react-bootstrap';
+import { toast } from 'react-toastify';
+//import { Dropdown } from 'react-bootstrap'
+import isEmail from 'validator/lib/isEmail';
 
 const Footer = () => {
   const [newsletterText, SetNewsletterText] = useState('Submit');
   const [newsletterEmail, SetNewsletterEmail] = useState('');
+  // const [validateEmail, SetvalidateEmail] = useState('');
   const dispatch = useDispatch();
 
+  const popOnSuccessfullySubmission = () => {
+    toast.success('Thank You😊, You will be notified with our latest Blogs!');
+  };
   const newsletterSubmit = (e) => {
     e.preventDefault();
+    if (!validateEmailForValidation(newsletterEmail)) {
+      return;
+    }
     dispatch(listFooter({ email: newsletterEmail }));
+    //  dispatch(listFooter({ email: validateEmail }));
     SetNewsletterText('Done');
     SetNewsletterEmail('');
+    popOnSuccessfullySubmission();
+    // SetvalidateEmail('');
+  };
+  // eslint-disable-next-line no-lone-blocks
+
+  const [emailError, setEmailError] = useState('Valid Email :)');
+  const validateEmailForValidation = (e) => {
+    // var email = e.target.value
+    if (isEmail(e)) {
+      setEmailError('Valid Email :)');
+      return true;
+    } else {
+      setEmailError('Enter valid Email!');
+      return false;
+    }
   };
 
   return (
@@ -39,19 +64,34 @@ const Footer = () => {
                     <input
                       type='email'
                       name='email'
+                      email='email'
                       required
+                      pattern='^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$'
+                      // value={newsletterEmail}
                       value={newsletterEmail}
                       onChange={(e) => SetNewsletterEmail(e.target.value)}
+                      // onChange={(e) => SetvalidateEmai(e.target.value)}
                       className='form-control'
                       placeholder='Enter Your Email Here...'
                     />
+                    {emailError === 'Enter valid Email!' && (
+                      <span
+                        style={{
+                          fontWeight: 'bold',
+                          color: 'red',
+                        }}
+                      >
+                        {emailError}
+                      </span>
+                    )}
                   </div>
                 </div>
-                <div className='col-3 ps-md-2 ps-0'>
+                <div className='col-3 ps-md-0 ps-0'>
                   <input
                     type='submit'
                     value={newsletterText}
                     className={'btn'}
+                    //onClick={popOnSuccessfullySubmission}
                   />
                 </div>
               </div>
@@ -61,7 +101,7 @@ const Footer = () => {
         <div className='row footer-div-2 pt-sm-4 pt-3 pb-4'>
           <div className='col-md-8'>
             <div className='row'>
-              <div className='col-sm-4 middle-img'>
+              <div className='col-sm-4 middle-img '>
                 <img src='/images/main-icon-white.png' alt='' />
                 <p>
                   <span className='pt-3 pb-2 contact'>CONTACT</span>
@@ -73,19 +113,24 @@ const Footer = () => {
               </div>
               <div className='col-sm-8 middle-links pt-sm-0 pt-3 pb-sm-0 pb-2'>
                 <div className='row'>
-                  <div className='col-6 mb-md-3 colored-footer-links'>
+                  <div className='col-4 mb-md-3 colored-footer-links'>
                     <Link to='' className='footer-links disabled'>
                       USEFUL LINKS
                     </Link>
                   </div>
-                  <div className='col-6 mb-md-3 colored-footer-links'>
+                  <div className='col-4 mb-md-3 colored-footer-links'>
                     <Link to='' className='footer-links disabled'>
                       KNOW MORE
                     </Link>
                   </div>
+                  <div className='col-4 mb-md-3 colored-footer-links'>
+                    <Link to='' className='footer-links disabled'>
+                      COMING SOON
+                    </Link>
+                  </div>
                 </div>
                 <div className='row '>
-                  <div className='col-6'>
+                  <div className='col-4'>
                     <ul className='list-group'>
                       <li className='list-group-item'>
                         <Link className='footer-list-links' to='/about'>
@@ -108,13 +153,14 @@ const Footer = () => {
                         </Link>
                       </li>
                       <li className='list-group-item'>
-                        <Link className='footer-list-links' to='/find-a-mentor'>
-                          Careers
-                        </Link>
+                        <Link to='/as-a-organisation'>For Organisation</Link>
+                      </li>
+                      <li className='list-group-item'>
+                        <Link to='/as-a-campus'>For campus</Link>
                       </li>
                     </ul>
                   </div>
-                  <div className='col-6'>
+                  <div className='col-4'>
                     <ul className='list-group'>
                       <li className='list-group-item'>
                         <Link
@@ -146,39 +192,28 @@ const Footer = () => {
                         </Link>
                       </li>
                       <li className='list-group-item'>
-                        <Dropdown>
-                          <Dropdown.Toggle
-                            className='footer-list-links'
-                            variant=''
-                            id='dropdown-basic'
-                          >
-                            More
-                          </Dropdown.Toggle>
-
-                          <Dropdown.Menu>
-                            <Dropdown.Item>
-                              <Link to='as-a-campus'>For campus</Link>
-                            </Dropdown.Item>
-                            <Dropdown.Item>
-                              <Link to='/as-a-organisation'>
-                                For Organisation
-                              </Link>
-                            </Dropdown.Item>
-                            <Dropdown.Item>
-                              <Link to='/our-blogs'>Blog</Link>
-                            </Dropdown.Item>
-                            <Dropdown.Item>
-                              <Link to='#' disabled>
-                                Study Abroad (coming soon)
-                              </Link>
-                            </Dropdown.Item>
-                            <Dropdown.Item>
-                              <Link to='#' disabled>
-                                Jobs (coming soon)
-                              </Link>
-                            </Dropdown.Item>
-                          </Dropdown.Menu>
-                        </Dropdown>
+                        <Link className='footer-list-links' to='/careers'>
+                          Careers
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className='col-4'>
+                    <ul className='list-group'>
+                      <li className='list-group-item'>
+                        <Link className='footer-list-links' to=''>
+                          Jobs
+                        </Link>
+                      </li>
+                      <li className='list-group-item'>
+                        <Link className='footer-list-links' to=''>
+                          Study Abroad
+                        </Link>
+                      </li>
+                      <li className='list-group-item'>
+                        <Link className='footer-list-links' to=''>
+                          Partner Program
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -236,7 +271,9 @@ const Footer = () => {
             © 2021 MentorKart is Registered Trademark of DGguru Learning
             Solutions Pvt. Ltd
           </p>
-          <p className='sec d-md-flex d-none'>© 2021 Mentorkart</p>
+          <p style={{ color: '#f07867' }} className='sec d-md-flex d-none'>
+            © 2021 Mentorkart
+          </p>
         </div>
       </div>
     </div>

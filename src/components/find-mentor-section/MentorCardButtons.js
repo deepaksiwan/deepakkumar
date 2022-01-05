@@ -1,25 +1,26 @@
-import React, { useState } from 'react';
-import Modal from 'react-modal';
-import SignInModal from '../join-mentokart/SignUpModal';
-Modal.setAppElement('#root');
+//import React from 'react';
+import React, { useState } from 'react'
+import Modal from 'react-modal'
+import SignInModal from '../join-mentokart/SignUpModal'
+Modal.setAppElement('#root')
 
 const MentorCardButtons = (props) => {
-  const loggedIn = JSON.parse(localStorage.getItem('userInfo'));
+  const loggedIn = JSON.parse(localStorage.getItem('userInfo'))
 
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
   const showModalBtn = (bool) => {
-    setShowModal(bool);
-  };
+    setShowModal(bool)
+  }
 
   return (
     <>
       <button
         onClick={() => {
           if (loggedIn === null) {
-            setShowModal(true);
+            setShowModal(true)
           } else {
-            window.location = `http://mentorkart.org/mentorkart?SSO_Mtoken=${loggedIn}&domain=https://mentorkart-new-ui.netlify.app`;
+            window.location = `https://mentorkart.org/mentorkart?SSO_Mtoken=${loggedIn}&domain=https://mentorkart-new-ui.netlify.app`
           }
         }}
         className={props.classes}
@@ -28,7 +29,7 @@ const MentorCardButtons = (props) => {
       </button>
 
       <Modal
-        id='signup-modal'
+        id="signup-modal"
         isOpen={showModal}
         onRequestClose={() => setShowModal(false)}
         style={{
@@ -47,7 +48,7 @@ const MentorCardButtons = (props) => {
         <SignInModal showModalBtn={showModalBtn} />
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export default MentorCardButtons;
+export default MentorCardButtons

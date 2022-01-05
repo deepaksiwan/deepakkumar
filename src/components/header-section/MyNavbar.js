@@ -8,11 +8,15 @@ Modal.setAppElement('#root');
 const MyNavbar = () => {
   const [showModal, setShowModal] = useState(false);
   const user = JSON.parse(localStorage.getItem('userInfo'));
-
   const showModalBtn = (bool) => {
     setShowModal(bool);
   };
 
+  const clickHandler = () => {
+    localStorage.setItem('userInfo', null);
+    console.log('Clicked');
+    window.location.reload();
+  };
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3 align-items-center'>
@@ -36,7 +40,7 @@ const MyNavbar = () => {
           <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
             <li className='nav-item me-3'>
               <Link className='nav-link' to='/all-mentors'>
-                All Mentors
+                All Mentor
               </Link>
             </li>
             <li className='nav-item me-3'>
@@ -45,13 +49,13 @@ const MyNavbar = () => {
               </Link>
             </li>
             <li className='nav-item me-3'>
-              <Link className='nav-link' to='/programs-courses'>
+              <Link className='nav-link' to='/courses'>
                 Programs & Courses
               </Link>
             </li>
             <li className='nav-item'>
-              <Link className='nav-link' to='/mentorship-programs'>
-                1:1 Mentorship Programs
+              <Link className='nav-link' to='/packages'>
+                Mentorship Packages
               </Link>
             </li>
           </ul>
@@ -64,7 +68,7 @@ const MyNavbar = () => {
                       <div className='col-6'>
                         <Link
                           to={{
-                            pathname: `http://mentorkart.org/mentorkart?SSO_Mtoken=${user}&domain=https://mentorkart-new-ui.netlify.app`,
+                            pathname: `https://mentorkart.org/mentorkart?SSO_Mtoken=${user}&domain=https://mentorkart-new-ui.netlify.app`,
                           }}
                           target='_blank'
                           className='nav-link btn'
@@ -72,17 +76,44 @@ const MyNavbar = () => {
                           Dashboard
                         </Link>
                       </div>
+
                       <div className='col-6'>
-                        <Link
-                          to='#'
-                          onClick={() => {
-                            localStorage.clear();
-                            window.location.reload();
-                          }}
-                          className='nav-link btn'
-                        >
-                          Logout
-                        </Link>
+                        <Dropdown>
+                          <Dropdown.Toggle
+                            className='nav-link btn'
+                            id='dropdown-basic'
+                            style={{
+                              border: 'None',
+                            }}
+                          >
+                            <img
+                              className='circle'
+                              src='/images/usernav.png'
+                              alt=''
+                              height='23px'
+                              width='20px'
+                            />
+                          </Dropdown.Toggle>
+
+                          <Dropdown.Menu>
+                            {/*<Dropdown.Item href="#/action-2">
+                              Manoj
+                            </Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">
+                              manojchinnaiyan@gmail.com
+                          </Dropdown.Item>*/}
+                            <Link
+                              to='#'
+                              onClick={() => {
+                                localStorage.clear();
+                                window.location.reload();
+                              }}
+                              className='nav-link btn'
+                            >
+                              Logout
+                            </Link>
+                          </Dropdown.Menu>
+                        </Dropdown>
                       </div>
                     </div>
                   ) : (
@@ -91,7 +122,7 @@ const MyNavbar = () => {
                       className='nav-link btn'
                       to='#'
                     >
-                      Login / SignUp
+                      Login/SignUp
                     </Link>
                   )}
                 </li>

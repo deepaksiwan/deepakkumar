@@ -29,6 +29,7 @@ export const signIn =
       dispatch({ type: LOGIN_GET_REQUEST });
       const { data } = await axios.post(
         'https://mentorkart.org/api/login',
+
         { email, password },
         config
       );
@@ -37,7 +38,7 @@ export const signIn =
         type: LOGIN_GET_SUCCESS,
         payload: data,
       });
-
+      localStorage.setItem('user', JSON.stringify(data));
       if (data) {
         const payload = {
           email: email,
@@ -144,14 +145,14 @@ export const otpsection =
 
       dispatch({ type: OTP_GET_REQUEST });
       const { data } = await axios.post(
-        'https://mentorkart.org/api/verify-otp',
+        `${process.env.REACT_APP_WEBSITE_URL}/api/verify-otp`,
         { otp, country_code, country_name },
         config
       );
       console.log(data);
 
       const res = await axios.post(
-        'https://mentorkart.org/api/store-leads',
+        `${process.env.REACT_APP_WEBSITE_URL}/api/store-leads`,
         {
           utm_source,
           email,
@@ -205,7 +206,7 @@ export const resend =
 
       dispatch({ type: OTPRESEND_GET_REQUEST });
       const { data } = await axios.post(
-        'https://mentorkart.org/api/resend-otp',
+        ` ${process.env.REACT_APP_WEBSITE_URL}/api/resend-otp`,
         { country_code },
         config
       );

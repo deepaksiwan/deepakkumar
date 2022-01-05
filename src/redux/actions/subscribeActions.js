@@ -40,7 +40,7 @@ export const listProfessionalSub = () => async (dispatch) => {
   try {
     dispatch({ type: SUBSCRIBE_PROFESSIONAL_REQUEST });
     const { data } = await axios.get(
-      'https://mentorkart.org/api/sso-subscription-plans'
+      `${process.env.REACT_APP_WEBSITE_URL}/api/sso-subscription-plans`
     );
     const fil = data.data;
     const fils = fil.plans;
@@ -65,7 +65,7 @@ export const listEntrepreneurSub = () => async (dispatch) => {
   try {
     dispatch({ type: SUBSCRIBE_ENTREPRENEUR_REQUEST });
     const { data } = await axios.get(
-      'https://mentorkart.org/api/sso-subscription-plans'
+      `${process.env.REACT_APP_WEBSITE_URL}/api/sso-subscription-plans`
     );
     const fil = data.data;
     const fils = fil.plans;

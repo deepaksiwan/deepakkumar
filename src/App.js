@@ -24,6 +24,7 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import RefundPolicy from './components/RefundPolicy';
 import TermsCondi from './components/TermsCondi';
 import Faq from './components/Faq';
+import Careers from './components/Careers';
 import MentorProfile from './components/MentorProfile';
 import SingleBlog from './components/SingleBlog';
 import FindAMentor from './components/FindAMentor';
@@ -40,7 +41,7 @@ function App() {
   return (
     <div>
       <Switch>
-        <Route path='/' exact>
+        <Route exact path='/'>
           <Header />
           <ToastContainer />
           <FindMentorSection />
@@ -60,47 +61,57 @@ function App() {
           <YoutubeSection />
           <Footer />
         </Route>
-        <Route path='/our-blogs'>
+        <Route exact path='/our-blogs'>
           <Blogs />
         </Route>
-        <Route path='/programs-courses'>
+        <Route exact path='/courses'>
           <Courses />
         </Route>
-        <Route path='/mentorship-programs'>
+        <Route exact path='/packages'>
           <Packages />
         </Route>
-        <Route path='/be-a-mentor'>
+        <Route exact path='/be-a-mentor'>
           <BeAMentor />
         </Route>
-        <Route path='/all-mentors'>
+        <Route exact path='/all-mentors'>
           <Mentors />
         </Route>
-        <Route path='/as-a-campus'>
+        <Route exact path='/as-a-campus'>
           <AsACampus />
         </Route>
-        <Route path='/as-a-organisation'>
+        <Route exact path='/as-a-organisation'>
           <AsAOrganisation />
         </Route>
-        <Route path='/about'>{/* <About /> */}</Route>
-        <Route path='/our-team'>{/* <OurTeam /> */}</Route>
-        <Route path='/faq'>
+        <Route exact path='/about'>
+          <About />
+        </Route>
+        <Route exact path='/our-team'>
+          <OurTeam />
+        </Route>
+        <Route exact path='/faq'>
           <Faq />
         </Route>
-        <Route path='/privacy-policy'>
+        <Route exact path='/careers'>
+          <Careers />
+        </Route>
+        <Route exact path='/privacy-policy'>
           <PrivacyPolicy />
         </Route>
-        <Route path='/refund-policy'>
+        <Route exact path='/refund-policy'>
           <RefundPolicy />
         </Route>
-        <Route path='/terms-conditions'>
+        <Route exact path='/terms-conditions'>
           <TermsCondi />
         </Route>
-        <Route path='/find-a-mentor'>{/* <FindAMentor /> */}</Route>
+        <Route exact path='/find-a-mentor'>
+          <FindAMentor />
+        </Route>
         <Route
+          exact
           path='/mentor-profile/:username/:id'
           component={MentorProfile}
         ></Route>
-        <Route path='/blog/:id' component={SingleBlog}></Route>
+        <Route exact path='/blog/:id' component={SingleBlog}></Route>
       </Switch>
     </div>
   );

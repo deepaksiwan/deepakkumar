@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import SignUpModal from '../join-mentokart/SignUpModal';
-import Modal from 'react-modal';
+import React, { useState } from 'react'
+import SignUpModal from '../join-mentokart/SignUpModal'
+import Modal from 'react-modal'
 
 const ProgramCard = ({ data }) => {
-  const loggedIn = JSON.parse(localStorage.getItem('userInfo'));
-  const [showModal, setShowModal] = useState(false);
+  const loggedIn = JSON.parse(localStorage.getItem('userInfo'))
+  const [showModal, setShowModal] = useState(false)
 
   const showModalBtn = (bool) => {
-    setShowModal(bool);
-  };
+    setShowModal(bool)
+  }
 
   return (
     <div>
-      <div className='program-card p-3'>
+      <div className="program-card p-3">
         <Modal
-          id='signup-modal'
+          id="signup-modal"
           isOpen={showModal}
           onRequestClose={() => setShowModal(false)}
           style={{
@@ -33,11 +33,11 @@ const ProgramCard = ({ data }) => {
           <SignUpModal showModalBtn={showModalBtn} />
         </Modal>
 
-        <div className=''>
-          <div className='px-0'>
-            <div className='img'>
+        <div className="">
+          <div className="px-0">
+            <div className="img">
               {data.icon_url === null ? (
-                <img src='/images/user.png' alt='' />
+                <img src="/images/user.png" alt="" />
               ) : (
                 <img
                   src={
@@ -50,35 +50,35 @@ const ProgramCard = ({ data }) => {
                     width: '100%',
                     height: '165px',
                   }}
-                  alt=''
+                  alt=""
                 />
               )}
             </div>
           </div>
-          <div className=''>
-            <div className='category-tags my-2'>
+          <div className="">
+            <div className="category-tags my-2">
               {data.user_category.split(',').map((cate, index) => {
                 return (
-                  <span key={index} className='btn btn-sm me-2'>
+                  <span key={index} className="btn btn-sm me-2">
                     {cate}
                   </span>
-                );
+                )
               })}
             </div>
             <h2>{data.mk_course_name}</h2>
             <h1>₹ {data.price} </h1>
-            <div className='mb-md-3 mb-2 packages-description-homepage'>
+            <p className="mb-md-3 mb-2 packages-description-homepage">
               {data.description}
-            </div>
+            </p>
             <button
               onClick={() => {
                 if (loggedIn === null) {
-                  setShowModal(true);
+                  setShowModal(true)
                 } else {
-                  window.location = `http://mentorkart.org/mentorkart?SSO_Mtoken=${loggedIn}&domain=https://mentorkart-new-ui.netlify.app`;
+                  window.location = `http://mentorkart.org/mentorkart?SSO_Mtoken=${loggedIn}&domain=https://mentorkart-new-ui.netlify.app`
                 }
               }}
-              className='enroll-btn btn px-xl-5 px-md-3 px-3 py-md-1 btn-ani'
+              className="enroll-btn btn px-xl-5 px-md-3 px-3 py-md-1 btn-ani"
             >
               Enroll Now
             </button>
@@ -86,7 +86,7 @@ const ProgramCard = ({ data }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProgramCard;
+export default ProgramCard

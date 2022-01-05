@@ -16,12 +16,46 @@ export const listMentor = () => async (dispatch) => {
       'https://mentorkart.org/api/sso-mentor-list'
     );
     const fil = data.data;
+    // console.log('All:Mentors : ', fil[0].industry, fil);
 
     dispatch({
       type: MENTOR_LIST_SUCCESS,
       payload: fil,
     });
   } catch (error) {
+    dispatch({
+      type: MENTOR_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response,
+    });
+  }
+};
+
+export const filterMentor = (chec) => async (dispatch) => {
+  try {
+    dispatch({ type: MENTOR_LIST_REQUEST });
+    console.log('chec.toString()', chec.toString(), chec);
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_WEBSITE_URL}/api/sso-mentor-list`
+    );
+    const fil = data.data;
+    console.log('fil-->', fil);
+    const d = chec
+      .map((g) =>
+        fil.filter((x) =>
+          Object.values(x).join(',').toLowerCase().includes(g.toLowerCase())
+        )
+      )
+      .flat();
+    console.log('d-->', d);
+    dispatch({
+      type: MENTOR_LIST_SUCCESS,
+      payload: d,
+    });
+  } catch (error) {
+    console.log(error);
     dispatch({
       type: MENTOR_LIST_FAIL,
       payload:
@@ -126,35 +160,49 @@ export const searchMentor = (query) => async (dispatch) => {
       'https://mentorkart.org/api/sso-mentor-list'
     );
     const fil = data.data;
+    let isFound;
     const std = fil.filter((x) => {
-      if (x.area_of_experties) {
-        return x.area_of_experties.toLowerCase().includes(query.toLowerCase());
-      }
-      if (x.user_category) {
-        return x.user_category.toLowerCase().includes(query.toLowerCase());
-      }
-      if (x.organisation) {
-        return x.organisation.toLowerCase().includes(query.toLowerCase());
-      }
-      if (x.industry) {
-        return x.industry.toLowerCase().includes(query.toLowerCase());
-      }
-      if (x.current_position) {
-        return x.current_position.toLowerCase().includes(query.toLowerCase());
-      }
-      if (x.designation) {
-        return x.designation.toLowerCase().includes(query.toLowerCase());
-      }
       if (x.first_name) {
-        return x.first_name.toLowerCase().includes(query.toLowerCase());
+        isFound = x.first_name.toLowerCase().includes(query.toLowerCase());
+        if (isFound) return isFound;
       }
       if (x.middle_name) {
-        return x.middle_name.toLowerCase().includes(query.toLowerCase());
+        isFound = x.middle_name.toLowerCase().includes(query.toLowerCase());
+        if (isFound) return isFound;
       }
       if (x.last_name) {
-        return x.last_name.toLowerCase().includes(query.toLowerCase());
+        isFound = x.last_name.toLowerCase().includes(query.toLowerCase());
+        if (isFound) return isFound;
       }
-      return x.user_categories;
+      if (x.area_of_experties) {
+        isFound = x.area_of_experties
+          .toLowerCase()
+          .includes(query.toLowerCase());
+        if (isFound) return isFound;
+      }
+      if (x.user_category) {
+        isFound = x.user_category.toLowerCase().includes(query.toLowerCase());
+        if (isFound) return isFound;
+      }
+      if (x.organisation) {
+        isFound = x.organisation.toLowerCase().includes(query.toLowerCase());
+        if (isFound) return isFound;
+      }
+      if (x.industry) {
+        isFound = x.industry.toLowerCase().includes(query.toLowerCase());
+        if (isFound) return isFound;
+      }
+      if (x.current_position) {
+        isFound = x.current_position
+          .toLowerCase()
+          .includes(query.toLowerCase());
+        if (isFound) return isFound;
+      }
+      if (x.designation) {
+        isFound = x.designation.toLowerCase().includes(query.toLowerCase());
+        if (isFound) return isFound;
+      }
+      return undefined;
     });
     // console.log(std);
 

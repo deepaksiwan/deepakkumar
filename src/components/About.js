@@ -119,7 +119,8 @@ const About = () => {
                     <img
                       src='/images/about-main.png'
                       alt=''
-                      className='img-fluid mx-auto'
+                      className='img-fluid '
+                      style={{ height: '350px', padding: '10px' }}
                     />
                   </div>
                 </div>

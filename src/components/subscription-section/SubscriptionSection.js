@@ -22,8 +22,6 @@ import 'swiper/components/pagination/pagination.scss';
 SwiperCore.use([Pagination, A11y, Autoplay]);
 
 const SubscriptionSection = () => {
-  const user = localStorage.getItem('userInfo');
-
   const [showModal, setShowModal] = useState(false);
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
@@ -53,17 +51,8 @@ const SubscriptionSection = () => {
   const showModalBtn = (bool) => {
     setShowModal(bool);
   };
-  const handleClick = () => {
-    if (user) {
-      // setShowModal(false);
-      window.location = `http://mentorkart.org/mentorkart?SSO_Mtoken=${user}&domain=https://mentorkart-new-ui.netlify.app`;
-      // alert('Logged in');
-    } else {
-      setShowModal(true);
-    }
-  };
   return (
-    <div className='subscription-section mt-md-5 mt-3'>
+    <div className='subscription-section my-md-5 my-3'>
       <div className='container-xxl px-xxl-0 px-lg-5 px-md-4 px-sm-3'>
         <div className='row text-center'>
           <span>{websiteContent[0]?.data[18]?.field_data}</span>
@@ -71,7 +60,7 @@ const SubscriptionSection = () => {
         </div>
         <div className='mt-3 align-items-center '>
           <Swiper
-            spaceBetween={30}
+            spaceBetween={50}
             slidesPerView={1}
             pagination={{ clickable: true }}
             autoplay={{ autoplay: true, delay: 20000 }}
@@ -90,7 +79,7 @@ const SubscriptionSection = () => {
             }}
           >
             <SwiperSlide>
-              <div className='px-lg-3 px-md-2 px-md-1'>
+              <div>
                 <div className='card align-items-center'>
                   <span className='category'>
                     {Studentsubscribe && Studentsubscribe[0]?.category}
@@ -162,7 +151,7 @@ const SubscriptionSection = () => {
                     <hr />
                     <div className='row '>
                       <button
-                        onClick={handleClick}
+                        onClick={() => showModalBtn(true)}
                         className='btn btn-sm btn-ani'
                       >
                         Enroll Now
@@ -174,7 +163,7 @@ const SubscriptionSection = () => {
             </SwiperSlide>
 
             <SwiperSlide>
-              <div className='px-lg-3 px-md-2 px-md-1'>
+              <div>
                 <div className='card align-items-center'>
                   <span className='category'>
                     {Professionalsubscribe &&
@@ -259,7 +248,7 @@ const SubscriptionSection = () => {
                     <hr />
                     <div className='row '>
                       <button
-                        onClick={handleClick}
+                        onClick={() => showModalBtn(true)}
                         className='btn btn-sm btn-ani'
                       >
                         Enroll Now
@@ -271,7 +260,7 @@ const SubscriptionSection = () => {
             </SwiperSlide>
 
             <SwiperSlide>
-              <div className='px-lg-3 px-md-2 px-md-1'>
+              <div>
                 <div className='card align-items-center'>
                   <span className='category'>
                     {Entrepreneursubscribe &&
@@ -356,7 +345,7 @@ const SubscriptionSection = () => {
                     <hr />
                     <div className='row '>
                       <button
-                        onClick={handleClick}
+                        onClick={() => showModalBtn(true)}
                         className='btn btn-sm btn-ani'
                       >
                         Enroll Now
